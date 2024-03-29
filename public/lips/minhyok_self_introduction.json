@@ -1,0 +1,23 @@
+{
+  "metadata": {
+    "soundFile": "../audios/minhyok_self_introduction.ogg",
+    "duration": 1.98
+  },
+  "mouthCues": [
+    { "start": 0.00, "end": 0.18, "value": "X" },
+    { "start": 0.18, "end": 0.24, "value": "F" },
+    { "start": 0.24, "end": 0.36, "value": "B" },
+    { "start": 0.36, "end": 0.50, "value": "F" },
+    { "start": 0.50, "end": 0.64, "value": "C" },
+    { "start": 0.64, "end": 0.78, "value": "B" },
+    { "start": 0.78, "end": 0.85, "value": "C" },
+    { "start": 0.85, "end": 0.92, "value": "B" },
+    { "start": 0.92, "end": 0.99, "value": "E" },
+    { "start": 0.99, "end": 1.07, "value": "A" },
+    { "start": 1.07, "end": 1.20, "value": "B" },
+    { "start": 1.20, "end": 1.27, "value": "F" },
+    { "start": 1.27, "end": 1.35, "value": "A" },
+    { "start": 1.35, "end": 1.72, "value": "B" },
+    { "start": 1.72, "end": 1.98, "value": "X" }
+  ]
+}

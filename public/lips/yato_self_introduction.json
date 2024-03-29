@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "soundFile": "../audios/yato_self_introduction.ogg",
+    "duration": 1.80
+  },
+  "mouthCues": [
+    { "start": 0.00, "end": 0.18, "value": "X" },
+    { "start": 0.18, "end": 0.25, "value": "C" },
+    { "start": 0.25, "end": 0.38, "value": "B" },
+    { "start": 0.38, "end": 0.45, "value": "G" },
+    { "start": 0.45, "end": 0.52, "value": "F" },
+    { "start": 0.52, "end": 0.66, "value": "C" },
+    { "start": 0.66, "end": 0.80, "value": "B" },
+    { "start": 0.80, "end": 0.87, "value": "C" },
+    { "start": 0.87, "end": 1.01, "value": "B" },
+    { "start": 1.01, "end": 1.08, "value": "C" },
+    { "start": 1.08, "end": 1.50, "value": "B" },
+    { "start": 1.50, "end": 1.80, "value": "X" }
+  ]
+}
