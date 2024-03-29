@@ -101,9 +101,14 @@ export const presentation = [
         animation: 'HandRaising',
       },
     },
-    // camera: cameraMinhyokFocus,
+    camera: cameraMinhyokFocus,
     text: 'こんにちは！私はミンヒョクです。',
     audio: '/audios/minhyok_self_introduction.ogg',
     lip: '/lips/minhyok_self_introduction.json',
+  },
+  // ----------------------------------
+  {
+    id: 'end_self_introduction',
+    title: '自己紹介終了',
   },
 ];

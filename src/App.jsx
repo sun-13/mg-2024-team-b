@@ -85,14 +85,16 @@ function App() {
 
     // Person animation
     const newPersonProps = structuredClone(initialPersonProps);
-    for (const person of persons) {
-      if (!data.personProps[person]) {
-        continue;
+    if (data.personProps) {
+      for (const person of persons) {
+        if (!data.personProps[person]) {
+          continue;
+        }
+        newPersonProps[person] = {
+          ...newPersonProps[person],
+          ...data.personProps[person],
+        };
       }
-      newPersonProps[person] = {
-        ...newPersonProps[person],
-        ...data.personProps[person],
-      };
     }
     setPersonProps(newPersonProps);
 
