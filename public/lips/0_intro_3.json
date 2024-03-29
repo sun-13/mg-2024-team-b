@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "soundFile": "/Users/x.sun/Downloads/Rhubarb-Lip-Sync-1.13.0-macOS/./0_intro_3.ogg",
+    "duration": 3.42
+  },
+  "mouthCues": [
+    { "start": 0.00, "end": 0.18, "value": "X" },
+    { "start": 0.18, "end": 0.46, "value": "B" },
+    { "start": 0.46, "end": 0.53, "value": "C" },
+    { "start": 0.53, "end": 0.60, "value": "F" },
+    { "start": 0.60, "end": 0.67, "value": "B" },
+    { "start": 0.67, "end": 0.81, "value": "H" },
+    { "start": 0.81, "end": 0.95, "value": "C" },
+    { "start": 0.95, "end": 1.02, "value": "B" },
+    { "start": 1.02, "end": 1.16, "value": "C" },
+    { "start": 1.16, "end": 1.37, "value": "D" },
+    { "start": 1.37, "end": 1.60, "value": "C" },
+    { "start": 1.60, "end": 1.64, "value": "A" },
+    { "start": 1.64, "end": 1.72, "value": "B" },
+    { "start": 1.72, "end": 1.80, "value": "A" },
+    { "start": 1.80, "end": 2.49, "value": "B" },
+    { "start": 2.49, "end": 2.63, "value": "C" },
+    { "start": 2.63, "end": 2.70, "value": "B" },
+    { "start": 2.70, "end": 2.84, "value": "C" },
+    { "start": 2.84, "end": 2.91, "value": "B" },
+    { "start": 2.91, "end": 3.12, "value": "C" },
+    { "start": 3.12, "end": 3.19, "value": "B" },
+    { "start": 3.19, "end": 3.42, "value": "X" }
+  ]
+}
