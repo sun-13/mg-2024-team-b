@@ -1,3 +1,12 @@
+/*
+ * Memo:
+ * https://elevenlabs.io/app/speech-synthesis
+ * sun : Harry
+ * Yasushi : George
+ * Yato : Sarah
+ * Minhyok : Thomas
+ */
+
 const cameraSunFocus = {
   position: {
     x: -3,
@@ -51,6 +60,58 @@ const cameraMinhyokFocus = {
 };
 
 export const presentation = [
+  {
+    id: 'intro_1',
+    title: 'intro_1',
+    personProps: {
+      sun: {
+        animation: 'HandRaising',
+      },
+    },
+    text: 'こんにちは。TeamBです。',
+    audio: '/audios/0_intro_1.ogg',
+    lip: '/lips/0_intro_1.json',
+  },
+  // ----------------------------------
+  {
+    id: 'intro_2',
+    title: 'intro_2',
+    personProps: {
+      yasushi: {
+        animation: 'HandRaising',
+      },
+    },
+    text: '今回チームで取り組んだテーマは「Lip Sync」です。Lip Syncって何かって？ちょうどいま、私がやっていることです。トークスクリプトに合わせて、音声をAIで生成し、さらに3Dキャラクターの口の動きを自動生成しています。すごいでしょ？',
+    audio: '/audios/0_intro_2.ogg',
+    lip: '/lips/0_intro_2.json',
+  },
+  // ----------------------------------
+  {
+    id: 'intro_3',
+    title: 'intro_3',
+    personProps: {
+      yato: {
+        animation: 'HandRaising',
+      },
+    },
+    text: '詳しいことは、このあと皆で説明しますね。',
+    audio: '/audios/0_intro_3.ogg',
+    lip: '/lips/0_intro_3.json',
+  },
+  // ----------------------------------
+  {
+    id: 'intro_4',
+    title: 'intro_4',
+    personProps: {
+      minhyok: {
+        animation: 'HandRaising',
+      },
+    },
+    text: 'その前に、チームメンバーの紹介をさせていただきます。',
+    audio: '/audios/0_intro_4.ogg',
+    lip: '/lips/0_intro_4.json',
+  },
+  // ----------------------------------
   {
     id: 'sun_self_introduction',
     title: '自己紹介（孫）',
