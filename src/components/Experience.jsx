@@ -7,7 +7,7 @@ import { Minhyok } from "./avatar/Minhyok";
 import { useThree } from "@react-three/fiber";
 
 export const Experience = (props) => {
-  const { personProps } = props;
+  const { personProps, audio, lipData } = props;
   const texture = useTexture("textures/background.jpg");
   const viewport = useThree((state) => state.viewport);
   const personScale = 2;
@@ -15,16 +15,16 @@ export const Experience = (props) => {
   return (
     <>
       <Sun
-        {...personProps.sun}
+        {...personProps.sun} audio={audio} lipData={lipData}
       />
       <Yasushi
-        {...personProps.yasushi}
+        {...personProps.yasushi} audio={audio} lipData={lipData}
       />
       <Yato
-        {...personProps.yato}
+        {...personProps.yato} audio={audio} lipData={lipData}
       />
       <Minhyok
-        {...personProps.minhyok}
+        {...personProps.minhyok} audio={audio} lipData={lipData}
       />
       <Environment preset="sunset" />
       {/* <mesh position={[0, 1, 0]}>

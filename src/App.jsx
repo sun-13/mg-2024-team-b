@@ -22,18 +22,22 @@ function App() {
     sun: {
       position: [-2.4, personPositionY, personPositionZ],
       animation: "IdleLookHand",
+      isSpeaking: false,
     },
     yasushi: {
       position: [-0.8, personPositionY, personPositionZ],
       animation: "Happy",
+      isSpeaking: false,
     },
     yato: {
       position: [0.8, personPositionY, personPositionZ],
       animation: "Idle",
+      isSpeaking: false,
     },
     minhyok: {
       position: [2.4, personPositionY, personPositionZ],
       animation: "IdleHappy",
+      isSpeaking: false,
     },
   };
   const defaultCameraPosition = {
@@ -48,6 +52,8 @@ function App() {
   };
 
   // state
+  const [audio, setAudio] = useState(null);
+  const [lipData, setLipData] = useState(null);
   const [personProps, setPersonProps] = useState(initialPersonProps);
   const [currentPresentationIndex, setCurrentPresentationIndex] = useState(0);
   const [isPlayingPresentation, setIsPlayingPresentation] = useState(false);
@@ -126,16 +132,18 @@ function App() {
      * Lip Sync データを適用する
      */
     if (lipData) {
+      setLipData(lipData);
       console.log(lipData);
     };
 
     // Play Audio
     if (audioData) {
-      const audio = new Audio(audioData);
-      audio.addEventListener("ended", () => {
+      const currentAudio = new Audio(audioData);
+      currentAudio.addEventListener("ended", () => {
         stop();
       });
-      audio.play();
+      currentAudio.play();
+      setAudio(currentAudio);
     } else {
       setCurrentPresentationIndex(currentPresentationIndex >= presentation.length - 1 ? 0 : currentPresentationIndex + 1);
       setIsPlayingPresentation(false);
@@ -146,6 +154,8 @@ function App() {
     setPersonProps(initialPersonProps);
     setCurrentPresentationIndex(currentPresentationIndex >= presentation.length - 1 ? 0 : currentPresentationIndex + 1);
     setIsPlayingPresentation(false);
+    setLipData(null);
+    setAudio(null);
   }
 
   return (
@@ -161,6 +171,8 @@ function App() {
         <Experience
           personProps={personProps}
           controls={controls}
+          lipData={lipData}
+          audio={audio}
         />
         <Tween />
       </Canvas>

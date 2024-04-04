@@ -66,6 +66,7 @@ export const presentation = [
     personProps: {
       sun: {
         animation: 'HandRaising',
+        isSpeaking: true,
       },
     },
     text: 'こんにちは。TeamBです。',
@@ -79,6 +80,7 @@ export const presentation = [
     personProps: {
       yasushi: {
         animation: 'HandRaising',
+        isSpeaking: true,
       },
     },
     text: '今回チームで取り組んだテーマは「Lip Sync」です。Lip Syncって何かって？ちょうどいま、私がやっていることです。トークスクリプトに合わせて、音声をAIで生成し、さらに3Dキャラクターの口の動きを自動生成しています。すごいでしょ？',
@@ -92,6 +94,7 @@ export const presentation = [
     personProps: {
       yato: {
         animation: 'HandRaising',
+        isSpeaking: true,
       },
     },
     text: '詳しいことは、このあと皆で説明しますね。',
@@ -105,6 +108,7 @@ export const presentation = [
     personProps: {
       minhyok: {
         animation: 'HandRaising',
+        isSpeaking: true,
       },
     },
     text: 'その前に、チームメンバーの紹介をさせていただきます。',
@@ -118,6 +122,7 @@ export const presentation = [
     personProps: {
       sun: {
         animation: 'HandRaising',
+        isSpeaking: true,
       },
     },
     camera: cameraSunFocus,
@@ -132,6 +137,7 @@ export const presentation = [
     personProps: {
       yasushi: {
         animation: 'HandRaising',
+        isSpeaking: true,
       },
     },
     camera: cameraYasushiFocus,
@@ -146,6 +152,7 @@ export const presentation = [
     personProps: {
       yato: {
         animation: 'HandRaising',
+        isSpeaking: true,
       },
     },
     camera: cameraYatoFocus,
@@ -160,6 +167,7 @@ export const presentation = [
     personProps: {
       minhyok: {
         animation: 'HandRaising',
+        isSpeaking: true,
       },
     },
     camera: cameraMinhyokFocus,

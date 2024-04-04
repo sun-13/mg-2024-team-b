@@ -6,6 +6,8 @@ Command: npx gltfjsx@6.2.3 public/models/64f1a714fe61576b46f27ca2.glb -o src/com
 import React, { useEffect, useRef } from 'react'
 import { useAnimations, useFBX } from '@react-three/drei'
 import { AnimationConst } from '@/AnimationConst'
+import { useFrame } from "@react-three/fiber";
+import * as THREE from 'three';
 
 
 export function AvatarInner(props) {
@@ -14,6 +16,9 @@ export function AvatarInner(props) {
     nodes,
     materials,
     scene,
+    audio,
+    lipData,
+    isSpeaking,
   } = {
     animation: 'Happy',
     ...props
@@ -30,10 +35,90 @@ export function AvatarInner(props) {
 
   const { actions } = useAnimations(animations, group);
 
+  // TODO: 一旦それっぽい感じにしてみたので要調整
+  const morphTargetSmoothing = 0.5;
+  const morphTargetScale = 1.5;
+  const corresponding = {
+    A: [{ target: "mouthSmile", value: 0.12}, {target: "mouthOpen", value: 0.26}], // viseme_U
+    B: [{ target: "mouthSmile", value: 0.12}, {target: "mouthOpen", value: 0.26}], // viseme_U
+    C: [{ target: "mouthSmile", value: 0.4}, {target: "mouthOpen", value: 0.32}], // viseme_I
+    D: [{ target: "mouthSmile", value: 0.66}, {target: "mouthOpen", value: 0.33}], // viseme_AA
+    E: [{ target: "mouthSmile", value: 0.25}, {target: "mouthOpen", value: 0.9}], // viseme_O
+    F: [{ target: "mouthSmile", value: 0.12}, {target: "mouthOpen", value: 0.26}], // viseme_U
+    G: [{ target: "mouthSmile", value: 0.12}, {target: "mouthOpen", value: 0.26}], // viseme_U
+    H: [{ target: "mouthSmile", value: 0.4}, {target: "mouthOpen", value: 0.65}], // viseme_E
+    X: [{ target: "mouthSmile", value: 0.12}, {target: "mouthOpen", value: 0.26}], // viseme_U
+  };
+
   useEffect(() => {
     actions[animation].reset().fadeIn(0.5).play();
     return () => actions[animation].fadeOut(0.5);
   }, [animation, actions]);
+
+  useFrame(() => {
+    initializeMorphTargets();
+
+    if (audio && lipData && isSpeaking) {
+      const currentTime = audio.currentTime;
+      for (const mouthCue of lipData.mouthCues) {
+        if (currentTime >= mouthCue.start && currentTime <= mouthCue.end) {
+          corresponding[mouthCue.value].forEach((item) => {
+            nodes.Wolf3D_Head.morphTargetInfluences[
+              nodes.Wolf3D_Head.morphTargetDictionary[
+                item.target
+              ]
+            ] =  THREE.MathUtils.lerp(
+              nodes.Wolf3D_Head.morphTargetInfluences[
+                nodes.Wolf3D_Head.morphTargetDictionary[
+                  item.target
+                ]
+              ],
+              item.value * morphTargetScale,
+              morphTargetSmoothing
+            );
+
+            nodes.Wolf3D_Teeth.morphTargetInfluences[
+              nodes.Wolf3D_Teeth.morphTargetDictionary[
+                item.target
+              ]
+            ] =  THREE.MathUtils.lerp(
+              nodes.Wolf3D_Teeth.morphTargetInfluences[
+                nodes.Wolf3D_Teeth.morphTargetDictionary[
+                  item.target
+                ]
+              ],
+              item.value * morphTargetScale,
+              morphTargetSmoothing
+            );
+          });
+        }
+      }
+    }
+  })
+
+  const initializeMorphTargets = () => {
+    Object.values(["mouthSmile", "mouthOpen"]).forEach((value) => {
+      nodes.Wolf3D_Head.morphTargetInfluences[
+        nodes.Wolf3D_Head.morphTargetDictionary[value]
+      ] = THREE.MathUtils.lerp(
+        nodes.Wolf3D_Head.morphTargetInfluences[
+          nodes.Wolf3D_Head.morphTargetDictionary[value]
+        ],
+        0,
+        morphTargetSmoothing
+      );
+
+      nodes.Wolf3D_Teeth.morphTargetInfluences[
+        nodes.Wolf3D_Teeth.morphTargetDictionary[value]
+      ] = THREE.MathUtils.lerp(
+        nodes.Wolf3D_Teeth.morphTargetInfluences[
+          nodes.Wolf3D_Teeth.morphTargetDictionary[value]
+        ],
+        0,
+        morphTargetSmoothing
+      );
+    });
+  };
 
   return (
     <group {...props} scale={2} dispose={null} ref={group}>
@@ -100,6 +185,16 @@ export function AvatarInner(props) {
         morphTargetDictionary={nodes.Wolf3D_Teeth.morphTargetDictionary}
         morphTargetInfluences={nodes.Wolf3D_Teeth.morphTargetInfluences}
       />
+      { nodes.Wolf3D_Glasses && (
+        <skinnedMesh
+          name="Wolf3D_Glasses"
+          geometry={nodes.Wolf3D_Glasses.geometry}
+          material={materials.Wolf3D_Glasses}
+          skeleton={nodes.Wolf3D_Glasses.skeleton}
+          morphTargetDictionary={nodes.Wolf3D_Glasses.morphTargetDictionary}
+          morphTargetInfluences={nodes.Wolf3D_Glasses.morphTargetInfluences}
+        />)
+      }
     </group>
   );
 }
