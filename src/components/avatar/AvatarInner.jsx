@@ -9,6 +9,7 @@ import { AnimationConst } from '@/AnimationConst'
 import { useFrame } from "@react-three/fiber";
 import * as THREE from 'three';
 
+const isUsingViseme = true;
 
 export function AvatarInner(props) {
   const {
@@ -37,17 +38,28 @@ export function AvatarInner(props) {
 
   // TODO: 一旦それっぽい感じにしてみたので要調整
   const morphTargetSmoothing = 0.5;
-  const morphTargetScale = 1.5;
-  const corresponding = {
-    A: [{ target: "mouthSmile", value: 0.12}, {target: "mouthOpen", value: 0.26}], // viseme_U
-    B: [{ target: "mouthSmile", value: 0.12}, {target: "mouthOpen", value: 0.26}], // viseme_U
+  const morphTargetScale = 1;
+  const customCorresponding = {
+    A: [{ target: "mouthSmile", value: 0.12}, {target: "mouthOpen", value: 0.26}], // viseme_PP
+    B: [{ target: "mouthSmile", value: 0.12}, {target: "mouthOpen", value: 0.26}], //   B: "viseme_kk",
     C: [{ target: "mouthSmile", value: 0.4}, {target: "mouthOpen", value: 0.32}], // viseme_I
     D: [{ target: "mouthSmile", value: 0.66}, {target: "mouthOpen", value: 0.33}], // viseme_AA
     E: [{ target: "mouthSmile", value: 0.25}, {target: "mouthOpen", value: 0.9}], // viseme_O
     F: [{ target: "mouthSmile", value: 0.12}, {target: "mouthOpen", value: 0.26}], // viseme_U
-    G: [{ target: "mouthSmile", value: 0.12}, {target: "mouthOpen", value: 0.26}], // viseme_U
-    H: [{ target: "mouthSmile", value: 0.4}, {target: "mouthOpen", value: 0.65}], // viseme_E
-    X: [{ target: "mouthSmile", value: 0.12}, {target: "mouthOpen", value: 0.26}], // viseme_U
+    G: [{ target: "mouthSmile", value: 0.12}, {target: "mouthOpen", value: 0.26}], // viseme_FF
+    H: [{ target: "mouthSmile", value: 0.4}, {target: "mouthOpen", value: 0.65}], // viseme_TH
+    X: [{ target: "mouthSmile", value: 0.12}, {target: "mouthOpen", value: 0.26}], // viseme_PP
+  };
+  const visemeCorresponding = {
+    A: "viseme_PP",
+    B: "viseme_kk",
+    C: "viseme_I",
+    D: "viseme_AA",
+    E: "viseme_O",
+    F: "viseme_U",
+    G: "viseme_FF",
+    H: "viseme_TH",
+    X: "viseme_PP",
   };
 
   useEffect(() => {
@@ -56,48 +68,59 @@ export function AvatarInner(props) {
   }, [animation, actions]);
 
   useFrame(() => {
+    if (isUsingViseme) {
+      handleFrameViseme();
+    } else {
+      handleFrameCustom();
+    }
+  });
+
+  // Custom
+  const handleFrameCustom = () => {
     initializeMorphTargets();
 
-    if (audio && lipData && isSpeaking) {
-      const currentTime = audio.currentTime;
-      for (const mouthCue of lipData.mouthCues) {
-        if (currentTime >= mouthCue.start && currentTime <= mouthCue.end) {
-          corresponding[mouthCue.value].forEach((item) => {
+    if (!audio || !lipData || !isSpeaking) {
+      return;
+    }
+    const currentTime = audio.currentTime;
+    for (const mouthCue of lipData.mouthCues) {
+      if (currentTime >= mouthCue.start && currentTime <= mouthCue.end) {
+        for (const item of customCorresponding[mouthCue.value]) {
+          nodes.Wolf3D_Head.morphTargetInfluences[
+            nodes.Wolf3D_Head.morphTargetDictionary[
+              item.target
+            ]
+          ] =  THREE.MathUtils.lerp(
             nodes.Wolf3D_Head.morphTargetInfluences[
               nodes.Wolf3D_Head.morphTargetDictionary[
                 item.target
               ]
-            ] =  THREE.MathUtils.lerp(
-              nodes.Wolf3D_Head.morphTargetInfluences[
-                nodes.Wolf3D_Head.morphTargetDictionary[
-                  item.target
-                ]
-              ],
-              item.value * morphTargetScale,
-              morphTargetSmoothing
-            );
+            ],
+            item.value * morphTargetScale,
+            morphTargetSmoothing
+          );
 
+          nodes.Wolf3D_Teeth.morphTargetInfluences[
+            nodes.Wolf3D_Teeth.morphTargetDictionary[
+              item.target
+            ]
+          ] =  THREE.MathUtils.lerp(
             nodes.Wolf3D_Teeth.morphTargetInfluences[
               nodes.Wolf3D_Teeth.morphTargetDictionary[
                 item.target
               ]
-            ] =  THREE.MathUtils.lerp(
-              nodes.Wolf3D_Teeth.morphTargetInfluences[
-                nodes.Wolf3D_Teeth.morphTargetDictionary[
-                  item.target
-                ]
-              ],
-              item.value * morphTargetScale,
-              morphTargetSmoothing
-            );
-          });
+            ],
+            item.value * morphTargetScale,
+            morphTargetSmoothing
+          );
         }
+        break;
       }
     }
-  })
+  };
 
   const initializeMorphTargets = () => {
-    Object.values(["mouthSmile", "mouthOpen"]).forEach((value) => {
+    for (const value of ["mouthSmile", "mouthOpen"]) {
       nodes.Wolf3D_Head.morphTargetInfluences[
         nodes.Wolf3D_Head.morphTargetDictionary[value]
       ] = THREE.MathUtils.lerp(
@@ -117,8 +140,75 @@ export function AvatarInner(props) {
         0,
         morphTargetSmoothing
       );
-    });
+    }
   };
+
+  // Viseme
+  const handleFrameViseme = () => {
+    initializeVisemeMorphTargets();
+    if (!audio || !lipData || !isSpeaking) {
+      return;
+    }
+
+    const currentTime = audio.currentTime;
+    for (const mouthCue of lipData.mouthCues) {
+      if (currentTime >= mouthCue.start && currentTime <= mouthCue.end) {
+        nodes.Wolf3D_Head.morphTargetInfluences[
+          nodes.Wolf3D_Head.morphTargetDictionary[
+            visemeCorresponding[mouthCue.value]
+          ]
+        ] = THREE.MathUtils.lerp(
+          nodes.Wolf3D_Head.morphTargetInfluences[
+            nodes.Wolf3D_Head.morphTargetDictionary[
+              visemeCorresponding[mouthCue.value]
+            ]
+          ],
+          morphTargetScale,
+          morphTargetSmoothing
+        );
+        nodes.Wolf3D_Teeth.morphTargetInfluences[
+          nodes.Wolf3D_Teeth.morphTargetDictionary[
+            visemeCorresponding[mouthCue.value]
+          ]
+        ] = THREE.MathUtils.lerp(
+          nodes.Wolf3D_Teeth.morphTargetInfluences[
+            nodes.Wolf3D_Teeth.morphTargetDictionary[
+              visemeCorresponding[mouthCue.value]
+            ]
+          ],
+          morphTargetScale,
+          morphTargetSmoothing
+        );
+        break;
+      }
+    }
+  };
+
+  const initializeVisemeMorphTargets = () => {
+    for (const value of Object.values(visemeCorresponding)) {
+      nodes.Wolf3D_Head.morphTargetInfluences[
+        nodes.Wolf3D_Head.morphTargetDictionary[value]
+      ] = THREE.MathUtils.lerp(
+        nodes.Wolf3D_Head.morphTargetInfluences[
+          nodes.Wolf3D_Head.morphTargetDictionary[value]
+        ],
+        0,
+        morphTargetSmoothing
+      );
+
+      nodes.Wolf3D_Teeth.morphTargetInfluences[
+        nodes.Wolf3D_Teeth.morphTargetDictionary[value]
+      ] = THREE.MathUtils.lerp(
+        nodes.Wolf3D_Teeth.morphTargetInfluences[
+          nodes.Wolf3D_Teeth.morphTargetDictionary[value]
+        ],
+        0,
+        morphTargetSmoothing
+      );
+    }
+  };
+
+
 
   return (
     <group {...props} scale={2} dispose={null} ref={group}>
