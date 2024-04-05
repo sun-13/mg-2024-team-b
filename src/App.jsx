@@ -79,7 +79,6 @@ function App() {
     if (data.lip) {
       await fetch(data.lip).then((response) => response.json()).then((json) => {
         lipData = json;
-        console.log(lipData);
       });
     }
     let audioData = null;

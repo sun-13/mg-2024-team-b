@@ -83,6 +83,7 @@ export const presentation = [
         isSpeaking: true,
       },
     },
+    camera: cameraYasushiFocus,
     text: '今回チームで取り組んだテーマは「Lip Sync」です。Lip Syncって何かって？ちょうどいま、私がやっていることです。トークスクリプトに合わせて、音声をAIで生成し、さらに3Dキャラクターの口の動きを自動生成しています。すごいでしょ？',
     audio: '/audios/0_intro_2.ogg',
     lip: '/lips/0_intro_2.json',
