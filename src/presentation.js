@@ -181,4 +181,19 @@ export const presentation = [
     id: 'end_self_introduction',
     title: '自己紹介終了',
   },
+  // ----------------------------------
+  {
+    id: '2_ROOV_1',
+    title: "ROOV紹介(1)",
+    personProps: {
+      sun: {
+        animation: 'Talking',
+        isSpeaking: true,
+      },
+    },
+    camera: cameraSunFocus,
+    text: 'いつでも・どこにいても・誰とでも。ROOVは、住宅事業DXを加速する3Dコミュニケーション・プラットフォームです。空間イメージの共有を可能にすることでマンションや戸建などの住宅事業が抱えていた課題を解決します。',
+    audio: '/audios/2_roov_1.ogg',
+    lip: '/lips/2_roov_1.json',
+  },
 ];
