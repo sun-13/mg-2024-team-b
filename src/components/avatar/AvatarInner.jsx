@@ -14,7 +14,8 @@ const isUsingViseme = true;
 // TODO: 一旦それっぽい感じにしてみたので要調整
 const morphTargetSmoothing = 0.7;
 const morphTargetScale = 1.2;
-const mouthAnimationStep = morphTargetScale / 5;
+const mouthAnimationStep = 0.01; // not per frame, but per millisecond
+let timeStamp = Date.now();
 
 const customCorresponding = {
   A: [{ target: "mouthSmile", value: 0.12}, {target: "mouthOpen", value: 0.26}], // viseme_PP
@@ -150,11 +151,22 @@ export function AvatarInner(props) {
 
   // Viseme
   const handleFrameViseme = () => {
-    initializeVisemeMorphTargets();
-    if (!audio || !lipData || !isSpeaking) {
+    // calculate time difference
+    const newTimeStamp = Date.now();
+    const timeDiff = newTimeStamp - timeStamp;
+    timeStamp = newTimeStamp;
+
+    if (!timeDiff) {
       return;
     }
 
+    // reset morph targets
+    initializeVisemeMorphTargets();
+
+    // apply viseme morph targets
+    if (!audio || !lipData || !isSpeaking) {
+      return;
+    }
     const currentTime = audio.currentTime;
     for (const mouthCue of lipData.mouthCues) {
       if (currentTime >= mouthCue.start && currentTime <= mouthCue.end) {
@@ -162,7 +174,7 @@ export function AvatarInner(props) {
         // determine transition out or in
         const direction = mouthCue.value === currentMouth ? 1 : -1;
         const newMouthCueValue = !currentMouth || (currentMouth !== mouthCue.value && currentMouthScale <= 0) ? mouthCue.value : currentMouth;
-        const _newScale = currentMouthScale + direction * mouthAnimationStep;
+        const _newScale = currentMouthScale + direction * mouthAnimationStep * timeDiff;
         const newScale = Math.min(1, Math.max(0, _newScale));
 
         nodes.Wolf3D_Head.morphTargetInfluences[
@@ -175,7 +187,7 @@ export function AvatarInner(props) {
               visemeCorresponding[newMouthCueValue]
             ]
           ],
-          newScale,
+          newScale * morphTargetScale,
           morphTargetSmoothing
         );
         nodes.Wolf3D_Teeth.morphTargetInfluences[
@@ -188,7 +200,7 @@ export function AvatarInner(props) {
               visemeCorresponding[newMouthCueValue]
             ]
           ],
-          newScale,
+          newScale * morphTargetScale,
           morphTargetSmoothing
         );
 
