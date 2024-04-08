@@ -15,7 +15,6 @@ const isUsingViseme = true;
 const morphTargetSmoothing = 0.7;
 const morphTargetScale = 1.2;
 const mouthAnimationStep = 0.01; // not per frame, but per millisecond
-let timeStamp = Date.now();
 
 const customCorresponding = {
   A: [{ target: "mouthSmile", value: 0.12}, {target: "mouthOpen", value: 0.26}], // viseme_PP
@@ -43,6 +42,7 @@ const visemeCorresponding = {
 
 export function AvatarInner(props) {
   const {
+    from,
     animation,
     nodes,
     materials,
@@ -64,6 +64,8 @@ export function AvatarInner(props) {
 
   const group = useRef();
   const { actions } = useAnimations(animations, group);
+
+  const [timeStamp, setTimeStamp] = useState(Date.now());
 
   useEffect(() => {
     actions[animation].reset().fadeIn(0.5).play();
@@ -154,7 +156,7 @@ export function AvatarInner(props) {
     // calculate time difference
     const newTimeStamp = Date.now();
     const timeDiff = newTimeStamp - timeStamp;
-    timeStamp = newTimeStamp;
+    setTimeStamp(newTimeStamp);
 
     if (!timeDiff) {
       return;

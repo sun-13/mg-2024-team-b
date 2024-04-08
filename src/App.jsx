@@ -12,6 +12,7 @@ function Tween() {
 }
 const persons = ["sun", "yasushi", "yato", "minhyok"];
 const cameraTransitionDuration = 1000;
+let currentAudio = null;
 
 function App() {
 
@@ -61,10 +62,6 @@ function App() {
   // ref
   const camera = useRef(null);
   const controls = useRef(null);
-  const audioRef = useRef(null);
-  audioRef.current?.addEventListener("ended", () => {
-    stop();
-  });
 
   const play = async () => {
     if (isPlayingPresentation || currentPresentationIndex >= presentation.length) {
@@ -126,18 +123,19 @@ function App() {
         .start();
     };
 
-    /**
-     * TODO:
-     * Lip Sync データを適用する
-     */
     if (lipData) {
       setLipData(lipData);
       console.log(lipData);
-    };
+    } else {
+      setLipData(null);
+    }
 
     // Play Audio
     if (audioData) {
-      const currentAudio = new Audio(audioData);
+      if (currentAudio) {
+        currentAudio.pause();
+      }
+      currentAudio = new Audio(audioData);
       currentAudio.addEventListener("ended", () => {
         stop();
       });
@@ -150,6 +148,9 @@ function App() {
   }
 
   const stop = () => {
+    if (currentAudio) {
+      currentAudio.pause();
+    }
     setPersonProps(initialPersonProps);
     setCurrentPresentationIndex(currentPresentationIndex >= presentation.length - 1 ? 0 : currentPresentationIndex + 1);
     setIsPlayingPresentation(false);
@@ -193,6 +194,12 @@ function App() {
           onClick={play}
           disabled={isPlayingPresentation || currentPresentationIndex >= presentation.length}
         >Play</button>
+        <button
+          type="button"
+          className="stop-button"
+          onClick={stop}
+          disabled={!isPlayingPresentation}
+        >Stop</button>
       </div>
       <Loader />
     </>

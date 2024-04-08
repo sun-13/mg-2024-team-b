@@ -15,17 +15,21 @@ export const Experience = (props) => {
   return (
     <>
       <Sun
-        {...personProps.sun} audio={audio} lipData={lipData}
-      />
+        {...personProps.sun}
+        audio={audio}
+        lipData={lipData} />
       <Yasushi
-        {...personProps.yasushi} audio={audio} lipData={lipData}
-      />
+        {...personProps.yasushi}
+        audio={audio}
+        lipData={lipData} />
       <Yato
-        {...personProps.yato} audio={audio} lipData={lipData}
-      />
+        {...personProps.yato}
+        audio={audio}
+        lipData={lipData} />
       <Minhyok
-        {...personProps.minhyok} audio={audio} lipData={lipData}
-      />
+        {...personProps.minhyok}
+        audio={audio}
+        lipData={lipData} />
       <Environment preset="sunset" />
       {/* <mesh position={[0, 1, 0]}>
         <planeGeometry args={[viewport.width * 1.2, viewport.height * 1.2]}
