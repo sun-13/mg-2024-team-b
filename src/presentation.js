@@ -310,4 +310,156 @@ export const presentation = [
     audio: '/audios/3_spc_4.ogg',
     lip: '/lips/3_spc_4.json',
   },
+  /** ----------------------------------
+   * 早口言葉
+  ---------------------------------- */
+  {
+    id: '3_LT_1',
+    title: "早口言葉(1)",
+    personProps: {
+      yato: {
+        animation: 'Talking',
+        isSpeaking: true,
+      },
+    },
+    camera: cameraYatoFocus,
+    text: '皆さん、早口言葉はご存知ですか？今日は、Lip Sync の私でも早口言葉が言えるところをお見せしましょう。<br />せっかくメンバーが多国籍なので、早口言葉も各国のを紹介します。<br /><br />まずは韓国から。',
+    audio: '/audios/4_lt_1.ogg',
+    lip: '/lips/4_lt_1.json',
+  },
+  // ----------------------------------
+  {
+    id: '3_LT_2',
+    title: "早口言葉(2) (韓国語)",
+    personProps: {
+      minhyok: {
+        animation: 'Talking',
+        isSpeaking: true,
+      },
+    },
+    camera: cameraMinhyokFocus,
+    text: '단단한 단 당근과 단단한 안 단 당근, 안 단단한 단 당근과 안 단단한 안 단 당근.',
+    audio: '/audios/4_lt_2.ogg',
+    lip: '/lips/4_lt_2.json',
+  },
+  // ----------------------------------
+  {
+    id: '3_LT_3',
+    title: "早口言葉(3) (韓国語の意味)",
+    personProps: {
+      minhyok: {
+        animation: 'Talking',
+        isSpeaking: true,
+      },
+    },
+    camera: cameraMinhyokFocus,
+    text: '意味は、「硬くて甘いニンジンと硬くて甘くないニンジン、硬くなくて甘いニンジンと硬くなくて甘くないニンジン」です。ニンジンが好きなんですね。',
+    audio: '/audios/4_lt_3.ogg',
+    lip: '/lips/4_lt_3.json',
+  },
+  // ----------------------------------
+  {
+    id: '3_LT_4',
+    title: "早口言葉(4) (次は)",
+    personProps: {
+      yato: {
+        animation: 'Talking',
+        isSpeaking: true,
+      },
+    },
+    camera: cameraYatoFocus,
+    text: '次は中国から。',
+    audio: '/audios/4_lt_4.ogg',
+    lip: '/lips/4_lt_4.json',
+  },
+  // ----------------------------------
+  {
+    id: '3_LT_5',
+    title: "早口言葉(5) (中国語)",
+    personProps: {
+      sun: {
+        animation: 'Talking',
+        isSpeaking: true,
+      },
+    },
+    camera: cameraSunFocus,
+    text: '石老师吃柿子、一天吃四个柿子。十天吃四十个柿子 。',
+    audio: '/audios/4_lt_5.ogg',
+    lip: '/lips/4_lt_5.json',
+  },
+  // ----------------------------------
+  {
+    id: '3_LT_6',
+    title: "早口言葉(6) (中国語の意味)",
+    personProps: {
+      sun: {
+        animation: 'Talking',
+        isSpeaking: true,
+      },
+    },
+    camera: cameraSunFocus,
+    text: '意味は、「石（せき）先生は柿を食べている。1日で柿を4個食べた。10日で柿を40個食べた。」です。柿が好きなんですね。',
+    audio: '/audios/4_lt_6.ogg',
+    lip: '/lips/4_lt_6.json',
+  },
+  // ----------------------------------
+  {
+    id: '3_LT_7',
+    title: "早口言葉(7) (最後は)",
+    personProps: {
+      yato: {
+        animation: 'Talking',
+        isSpeaking: true,
+      },
+    },
+    camera: cameraYatoFocus,
+    text: '最後は日本から。',
+    audio: '/audios/4_lt_7.ogg',
+    lip: '/lips/4_lt_7.json',
+  },
+  // ----------------------------------
+  {
+    id: '3_LT_8',
+    title: "早口言葉(8) (日本語)",
+    personProps: {
+      Yasushi: {
+        animation: 'Talking',
+        isSpeaking: true,
+      },
+    },
+    camera: cameraYasushiFocus,
+    text: 'この竹垣に竹立てかけたのは竹立てかけたかったから竹立てかけた。',
+    audio: '/audios/4_lt_8.ogg',
+    lip: '/lips/4_lt_8.json',
+  },
+  // ----------------------------------
+  {
+    id: '3_LT_9',
+    title: "早口言葉(9) (日本語の意味)",
+    personProps: {
+      Yasushi: {
+        animation: 'Talking',
+        isSpeaking: true,
+      },
+    },
+    camera: cameraYasushiFocus,
+    text: '意味は、「そんなに怒らないでください。つい、出来心だったんです」です。',
+    audio: '/audios/4_lt_9.ogg',
+    lip: '/lips/4_lt_9.json',
+  },
+  // ----------------------------------
+  {
+    id: '3_LT_10',
+    title: "早口言葉(10) (終了)",
+    personProps: {
+      Yato: {
+        animation: 'Talking',
+        isSpeaking: true,
+      },
+    },
+    camera: cameraYatoFocus,
+    text: 'どうです、上手に言えてるでしょう？皆さんも私に負けないよう練習してみてくださいね。',
+    audio: '/audios/4_lt_10.ogg',
+    lip: '/lips/4_lt_10.json',
+  },
 ];
