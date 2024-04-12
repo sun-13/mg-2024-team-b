@@ -186,7 +186,7 @@ function App() {
       <div className="ui-box">
         <hr className="hr" />
         <div className="project-title">
-          <p>Meet & Greet</p>
+          <p className="project-name">Meet & Greet</p>
           <h1>Team B</h1>
           <ul className="members-list">
             <li>sun_xuan</li>

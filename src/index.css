@@ -41,14 +41,11 @@ h1 {
   font-size: 32px;
 }
 
-p {
-  font-size: 12px;
-}
-
 .select,
 .icon-button {
   height: 40px;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .select {
@@ -96,6 +93,12 @@ p {
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(30px);
 
+  .project-title {
+    .project-name {
+      font-size: 12px;
+    }
+  }
+
   .control-area {
     display: flex;
     gap: 12px;
@@ -110,6 +113,17 @@ p {
       &.stop-button {
         background-color: #FF4D4F;
       }
+    }
+  }
+
+  .speech-area {
+    margin-top: 16px;
+
+    .speech-bubble {
+      background-color: #B4FD4F;
+      padding: 12px;
+      border-radius: 8px;
+      line-height: 1.8;
     }
   }
 }
