@@ -1,3 +1,25 @@
+/* reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #1F212A;
+  font-family: sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 #root {
   position: relative;
   width: 100vw;
@@ -9,12 +31,85 @@ body {
   margin: 0;
 }
 
+.hr {
+  margin: 20px 0;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  font-size: 32px;
+}
+
+p {
+  font-size: 12px;
+}
+
+.select,
+.icon-button {
+  height: 40px;
+  border-radius: 8px;
+}
+
+.select {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  /* -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; */
+  border: 1px solid #ccc;
+  background: #fff;
+  padding: 0 12px;
+}
+
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  background-color: #B4FD4F;
+  border: none;
+
+  img {
+    display: block;
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+  }
+}
+
+.members-list {
+  font-size: 12px;
+  text-align: right;
+}
+
 .ui-box {
   position: fixed;
+  width: 320px;
+  height: 100%;
   top: 0;
   left: 0;
-  display: flex;
-  gap: 10px;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(30px);
+
+  .control-area {
+    display: flex;
+    gap: 12px;
+
+    .select {
+      flex: 1;
+    }
+
+    .icon-button {
+      flex-shrink: 0;
+
+      &.stop-button {
+        background-color: #FF4D4F;
+      }
+    }
+  }
 }

@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Experience } from "./components/Experience";
 import { Loader, PerspectiveCamera, OrbitControls } from "@react-three/drei";
@@ -58,6 +58,7 @@ function App() {
   const [personProps, setPersonProps] = useState(initialPersonProps);
   const [currentPresentationIndex, setCurrentPresentationIndex] = useState(0);
   const [isPlayingPresentation, setIsPlayingPresentation] = useState(false);
+  const [speechText, setSpeechText] = useState('');
 
   // ref
   const camera = useRef(null);
@@ -147,6 +148,9 @@ function App() {
       setCurrentPresentationIndex(currentPresentationIndex >= presentation.length - 1 ? 0 : currentPresentationIndex + 1);
       setIsPlayingPresentation(false);
     }
+
+    // set speech text
+    setSpeechText(data.text || '');
   }
 
   const stop = () => {
@@ -158,6 +162,7 @@ function App() {
     setIsPlayingPresentation(false);
     setLipData(null);
     setAudio(null);
+    setSpeechText('');
   }
 
   return (
@@ -179,29 +184,54 @@ function App() {
         <Tween />
       </Canvas>
       <div className="ui-box">
-        <select
-          className="index-select"
-          name="currentPrensentationIndex"
-          id="currentPrensentationIndex"
-          value={currentPresentationIndex >= presentation.length ? 0 : currentPresentationIndex}
-          onChange={(e) => setCurrentPresentationIndex(Number(e.target.value))}
-        >
-          {presentation.map((data, index) => (
-            <option key={data.id} value={index}>{data.title}</option>
-          ))}
-        </select>
-        <button
-          type="button"
-          className="play-button"
-          onClick={play}
-          disabled={isPlayingPresentation || currentPresentationIndex >= presentation.length}
-        >Play</button>
-        <button
-          type="button"
-          className="stop-button"
-          onClick={stop}
-          disabled={!isPlayingPresentation}
-        >Stop</button>
+        <hr className="hr" />
+        <div className="project-title">
+          <p>Meet & Greet</p>
+          <h1>Team B</h1>
+          <ul className="members-list">
+            <li>sun_xuan</li>
+            <li>kimura_yasushi</li>
+            <li>yato_chiko</li>
+            <li>bae_minhyuk</li>
+          </ul>
+        </div>
+        <hr className="hr" />
+        <div className="control-area">
+          <select
+            className="select index-select"
+            name="currentPrensentationIndex"
+            id="currentPrensentationIndex"
+            value={currentPresentationIndex >= presentation.length ? 0 : currentPresentationIndex}
+            onChange={(e) => setCurrentPresentationIndex(Number(e.target.value))}
+          >
+            {presentation.map((data, index) => (
+              <option key={data.id} value={index}>{data.title}</option>
+            ))}
+          </select>
+          {!isPlayingPresentation && <button
+            type="button"
+            className="icon-button play-button"
+            onClick={play}
+            disabled={isPlayingPresentation || currentPresentationIndex >= presentation.length}
+          >
+            <img src="/icons/play.svg" alt="Play" />
+          </button>}
+          {isPlayingPresentation && <button
+            type="button"
+            className="icon-button stop-button"
+            onClick={stop}
+            disabled={!isPlayingPresentation}
+          >
+            <img src="/icons/stop.svg" alt="Stop" />
+          </button>}
+        </div>
+        {speechText &&
+        <div className="speech-area">
+          <div className="speech-bubble">
+            <p>{speechText}</p>
+          </div>
+        </div>}
+
       </div>
       <Loader />
     </>
