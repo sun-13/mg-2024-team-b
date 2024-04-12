@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 * {
   margin: 0;
   list-style: none;
@@ -89,6 +93,12 @@ h1 {
   height: 100%;
   top: 0;
   left: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+
   padding: 20px;
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(30px);
@@ -117,13 +127,26 @@ h1 {
   }
 
   .speech-area {
+    flex: 1;
+    overflow: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 12px;
     margin-top: 16px;
 
     .speech-bubble {
       background-color: #B4FD4F;
       padding: 12px;
       border-radius: 8px;
-      line-height: 1.8;
+      line-height: 2;
+      font-weight: 500;
+
+      &:not(:first-child) {
+        opacity: 0.5;
+      }
     }
   }
 }

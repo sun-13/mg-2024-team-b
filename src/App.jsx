@@ -59,6 +59,7 @@ function App() {
   const [currentPresentationIndex, setCurrentPresentationIndex] = useState(0);
   const [isPlayingPresentation, setIsPlayingPresentation] = useState(false);
   const [speechText, setSpeechText] = useState('');
+  const [speechTextArray, setSpeechTextArray] = useState([]);
 
   // ref
   const camera = useRef(null);
@@ -150,7 +151,11 @@ function App() {
     }
 
     // set speech text
-    setSpeechText(data.text || '');
+    if (data.text) {
+      const newSpeechArray = structuredClone(speechTextArray);
+      newSpeechArray.unshift(data.text);
+      setSpeechTextArray(newSpeechArray);
+    }
   }
 
   const stop = () => {
@@ -225,11 +230,13 @@ function App() {
             <img src="/icons/stop.svg" alt="Stop" />
           </button>}
         </div>
-        {speechText &&
+        {speechTextArray?.length > 0 &&
         <div className="speech-area">
+          {speechTextArray.map((speech, index) => (
           <div className="speech-bubble">
-            <p>{speechText}</p>
+              <p dangerouslySetInnerHTML={{__html: speech}} />
           </div>
+          ))}
         </div>}
 
       </div>
