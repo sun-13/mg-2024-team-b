@@ -4,7 +4,7 @@
  * sun : Harry
  * Yasushi : George
  * Yato : Sarah
- * Minhyok : Thomas
+ * Minhyuk : Thomas
  */
 
 const cameraSunFocus = {
@@ -46,7 +46,7 @@ const cameraYatoFocus = {
   },
 };
 
-const cameraMinhyokFocus = {
+const cameraMinhyukFocus = {
   position: {
     x: 3,
     y: 0,
@@ -110,7 +110,7 @@ export const presentation = [
     id: 'intro_4',
     title: 'intro_4',
     personProps: {
-      minhyok: {
+      minhyuk: {
         animation: 'HandRaising',
         isSpeaking: true,
       },
@@ -168,18 +168,18 @@ export const presentation = [
   },
   // ----------------------------------
   {
-    id: '1_self_minhyok',
+    id: '1_self_minhyuk',
     title: '自己紹介（ミンヒョク）',
     personProps: {
-      minhyok: {
+      minhyuk: {
         animation: 'HandRaising',
         isSpeaking: true,
       },
     },
-    camera: cameraMinhyokFocus,
+    camera: cameraMinhyukFocus,
     text: 'こんにちは。ペミンヒョクです。今回ページデザインを担当しました。アップルが大好きで市内に行くと是非アップルストアに行きます。もしアップルが好きな方がいらっしゃれば、一緒に行きましょう。よろしくお願いします。',
-    audio: '/audios/1_self_minhyok.ogg',
-    lip: '/lips/1_self_minhyok.json',
+    audio: '/audios/1_self_minhyuk.ogg',
+    lip: '/lips/1_self_minhyuk.json',
   },
   /** ----------------------------------
    * ROOV紹介
@@ -233,12 +233,12 @@ export const presentation = [
     id: '2_ROOV_4',
     title: 'ROOV紹介(4)',
     personProps: {
-      minhyok: {
+      minhyuk: {
         animation: 'Talking',
         isSpeaking: true,
       },
     },
-    camera: cameraMinhyokFocus,
+    camera: cameraMinhyukFocus,
     text: '空間のことは、空間でやりとりしたほうがいい。<br /><br />デジタルツインでの新たな体験を、お手元のブラウザで。さあ、ROOVを始めてみませんか。',
     audio: '/audios/2_roov_4.ogg',
     lip: '/lips/2_roov_4.json',
@@ -295,12 +295,12 @@ export const presentation = [
     id: '3_SPC_4',
     title: "架空の物件紹介(4)",
     personProps: {
-      minhyok: {
+      minhyuk: {
         animation: 'Talking',
         isSpeaking: true,
       },
     },
-    camera: cameraMinhyokFocus,
+    camera: cameraMinhyukFocus,
     text: '表参道駅より徒歩2分の好立地。<br /><br />日々変化し続けるこの表参道という土地に、あなたも住んでみませんか。',
     audio: '/audios/3_spc_4.ogg',
     lip: '/lips/3_spc_4.json',
@@ -327,12 +327,12 @@ export const presentation = [
     id: '3_LT_2',
     title: "早口言葉(2) (韓国語)",
     personProps: {
-      minhyok: {
+      minhyuk: {
         animation: 'Talking',
         isSpeaking: true,
       },
     },
-    camera: cameraMinhyokFocus,
+    camera: cameraMinhyukFocus,
     text: '단단한 단 당근과 단단한 안 단 당근, 안 단단한 단 당근과 안 단단한 안 단 당근.',
     audio: '/audios/4_lt_2.ogg',
     lip: '/lips/4_lt_2.json',
@@ -342,12 +342,12 @@ export const presentation = [
     id: '3_LT_3',
     title: "早口言葉(3) (韓国語の意味)",
     personProps: {
-      minhyok: {
+      minhyuk: {
         animation: 'Talking',
         isSpeaking: true,
       },
     },
-    camera: cameraMinhyokFocus,
+    camera: cameraMinhyukFocus,
     text: '意味は、「硬くて甘いニンジンと硬くて甘くないニンジン、硬くなくて甘いニンジンと硬くなくて甘くないニンジン」です。ニンジンが好きなんですね。',
     audio: '/audios/4_lt_3.ogg',
     lip: '/lips/4_lt_3.json',

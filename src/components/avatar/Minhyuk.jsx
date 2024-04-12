@@ -5,13 +5,13 @@ Command: npx gltfjsx@6.2.3 public/models/64f1a714fe61576b46f27ca2.glb -o src/com
 import { useGLTF } from '@react-three/drei'
 import { AvatarInner } from '@/components/avatar/AvatarInner'
 
-const glbFile = "/models/minhyok.glb";
+const glbFile = "/models/minhyuk.glb";
 
-export function Minhyok(props) {
+export function Minhyuk(props) {
   const { nodes, materials, scene } = useGLTF(glbFile);
 
   return (
-    <AvatarInner nodes={nodes} materials={materials} from="Minhyok" {...props} />
+    <AvatarInner nodes={nodes} materials={materials} from="Minhyuk" {...props} />
   );
 }
 

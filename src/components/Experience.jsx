@@ -3,7 +3,7 @@ import { Environment, useTexture } from "@react-three/drei";
 import { Sun } from "./avatar/Sun";
 import { Yasushi } from "./avatar/Yasushi";
 import { Yato } from "./avatar/Yato";
-import { Minhyok } from "./avatar/Minhyok";
+import { Minhyuk } from "./avatar/Minhyuk";
 import { useThree } from "@react-three/fiber";
 
 export const Experience = (props) => {
@@ -26,8 +26,8 @@ export const Experience = (props) => {
         {...personProps.yato}
         audio={audio}
         lipData={lipData} />
-      <Minhyok
-        {...personProps.minhyok}
+      <Minhyuk
+        {...personProps.minhyuk}
         audio={audio}
         lipData={lipData} />
       <Environment preset="sunset" />

@@ -10,7 +10,7 @@ function Tween() {
     TWEEN.update()
   })
 }
-const persons = ["sun", "yasushi", "yato", "minhyok"];
+const persons = ["sun", "yasushi", "yato", "minhyuk"];
 const cameraTransitionDuration = 1000;
 let currentAudio = null;
 
@@ -35,7 +35,7 @@ function App() {
       animation: "Idle",
       isSpeaking: false,
     },
-    minhyok: {
+    minhyuk: {
       position: [2.4, personPositionY, personPositionZ],
       animation: "IdleHappy",
       isSpeaking: false,
