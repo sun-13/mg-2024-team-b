@@ -181,11 +181,6 @@ export const presentation = [
     audio: '/audios/1_self_minhyok.ogg',
     lip: '/lips/1_self_minhyok.json',
   },
-  // ----------------------------------
-  {
-    id: 'end_self_introduction',
-    title: '自己紹介終了',
-  },
   /** ----------------------------------
    * ROOV紹介
   ---------------------------------- */
@@ -422,7 +417,7 @@ export const presentation = [
     id: '3_LT_8',
     title: "早口言葉(8) (日本語)",
     personProps: {
-      Yasushi: {
+      yasushi: {
         animation: 'Talking',
         isSpeaking: true,
       },
@@ -437,7 +432,7 @@ export const presentation = [
     id: '3_LT_9',
     title: "早口言葉(9) (日本語の意味)",
     personProps: {
-      Yasushi: {
+      yasushi: {
         animation: 'Talking',
         isSpeaking: true,
       },
@@ -452,7 +447,7 @@ export const presentation = [
     id: '3_LT_10',
     title: "早口言葉(10) (終了)",
     personProps: {
-      Yato: {
+      yato: {
         animation: 'Talking',
         isSpeaking: true,
       },

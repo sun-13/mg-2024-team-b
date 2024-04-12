@@ -58,6 +58,16 @@ export function AvatarInner(props) {
     return () => actions[animation].fadeOut(0.5);
   }, [animation, actions]);
 
+  useEffect(() => {
+    if (isSpeaking) {
+      console.log(`${from} is speaking`, {
+        audio,
+        lipData,
+        animation,
+      });
+    }
+  }, [isSpeaking, from, animation, audio, lipData]);
+
   useFrame(() => {
     handleFrameViseme();
   });

@@ -63,6 +63,17 @@ function App() {
   const camera = useRef(null);
   const controls = useRef(null);
 
+  const resetCamera = () => {
+    new TWEEN.Tween(controls.current.target)
+      .to(defaultCameraLookAt, cameraTransitionDuration)
+      .easing(TWEEN.Easing.Cubic.Out)
+      .start();
+    new TWEEN.Tween(camera.current.position)
+      .to(defaultCameraPosition, cameraTransitionDuration)
+      .easing(TWEEN.Easing.Cubic.Out)
+      .start();
+  };
+
   const play = async () => {
     if (isPlayingPresentation || currentPresentationIndex >= presentation.length) {
       return;
@@ -112,20 +123,11 @@ function App() {
         .easing(TWEEN.Easing.Cubic.Out)
         .start();
     } else {
-      // Reset camera position
-      new TWEEN.Tween(controls.current.target)
-        .to(defaultCameraLookAt, cameraTransitionDuration)
-        .easing(TWEEN.Easing.Cubic.Out)
-        .start();
-      new TWEEN.Tween(camera.current.position)
-        .to(defaultCameraPosition, cameraTransitionDuration)
-        .easing(TWEEN.Easing.Cubic.Out)
-        .start();
+      resetCamera();
     };
 
     if (lipData) {
       setLipData(lipData);
-      console.log(lipData);
     } else {
       setLipData(null);
     }

@@ -11,7 +11,7 @@ export function Minhyok(props) {
   const { nodes, materials, scene } = useGLTF(glbFile);
 
   return (
-    <AvatarInner nodes={nodes} materials={materials} {...props} />
+    <AvatarInner nodes={nodes} materials={materials} from="Minhyok" {...props} />
   );
 }
 
