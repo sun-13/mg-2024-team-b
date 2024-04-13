@@ -80,6 +80,14 @@ h1 {
     height: 18px;
     object-fit: contain;
   }
+
+  &.red {
+    background-color: #FF4D4F;
+  }
+
+  &.green {
+    background-color: #B4FD4F;
+  }
 }
 
 .members-list {
@@ -100,7 +108,7 @@ h1 {
   justify-content: flex-start;
 
   padding: 20px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(30px);
 
   .project-title {
@@ -119,10 +127,6 @@ h1 {
 
     .icon-button {
       flex-shrink: 0;
-
-      &.stop-button {
-        background-color: #FF4D4F;
-      }
     }
   }
 

@@ -1,9 +1,9 @@
-import { useState, useRef, useEffect } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Experience } from "./components/Experience";
-import { Loader, PerspectiveCamera, OrbitControls } from "@react-three/drei";
-import { presentation } from "./presentation";
-import TWEEN from '@tweenjs/tween.js'
+import { useState, useRef, useEffect } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Experience } from './components/Experience';
+import { Loader, PerspectiveCamera, OrbitControls } from '@react-three/drei';
+import { presentation } from './presentation';
+import TWEEN from '@tweenjs/tween.js';
 
 function Tween() {
   useFrame(() => {
@@ -223,7 +223,7 @@ function App() {
           </button>}
           {isPlayingPresentation && <button
             type="button"
-            className="icon-button stop-button"
+            className="icon-button red"
             onClick={stop}
             disabled={!isPlayingPresentation}
           >

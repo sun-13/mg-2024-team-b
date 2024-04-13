@@ -31,11 +31,10 @@ export const Experience = (props) => {
         audio={audio}
         lipData={lipData} />
       <Environment preset="sunset" />
-      {/* <mesh position={[0, 1, 0]}>
-        <planeGeometry args={[viewport.width * 1.2, viewport.height * 1.2]}
-        />
+      <mesh position={[0, 1, 0]}>
+        <planeGeometry args={[1920 / 150, 1080 / 150]} />
         <meshBasicMaterial map={texture} />
-      </mesh> */}
+      </mesh>
     </>
   );
 };
