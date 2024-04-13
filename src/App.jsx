@@ -153,7 +153,10 @@ function App() {
     // set speech text
     if (data.text) {
       const newSpeechArray = structuredClone(speechTextArray);
-      newSpeechArray.unshift(data.text);
+      newSpeechArray.unshift({
+        id: Date.now(),
+        text: data.text
+      });
       setSpeechTextArray(newSpeechArray);
     }
   }
@@ -232,9 +235,9 @@ function App() {
         </div>
         {speechTextArray?.length > 0 &&
         <div className="speech-area">
-          {speechTextArray.map((speech, index) => (
-          <div className="speech-bubble">
-              <p dangerouslySetInnerHTML={{__html: speech}} />
+          {speechTextArray.map((o, index) => (
+          <div key={o.id} className="speech-bubble">
+              <p dangerouslySetInnerHTML={{__html: o.text}} />
           </div>
           ))}
         </div>}
