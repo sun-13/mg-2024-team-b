@@ -84,6 +84,11 @@ function App() {
       .start();
   };
 
+  const resetState = () => {
+    stop();
+    resetCamera();
+  };
+
   const play = async () => {
     if (isPlayingPresentation || currentPresentationIndex >= presentation.length) {
       return;
@@ -290,7 +295,7 @@ function App() {
             type="button"
             className="icon-button green"
             title="Reset Camera"
-            onClick={resetCamera}
+            onClick={resetState}
           >
             <ReactSVG src="/icons/camera-reset.svg" />
           </button>

@@ -443,6 +443,28 @@ export const presentation = [
     lip: '/lips/4_lt_10.json',
     canvasColor: 'color-blue',
   },
+  /** ----------------------------------
+   * おわり
+   * ---------------------------------- */
+  {
+    id: 'end',
+    title: 'おわり',
+    personProps: {
+      sun: {
+        animation: 'SambaDancing',
+      },
+      yasushi: {
+        animation: 'SambaDancing',
+      },
+      yato: {
+        animation: 'SambaDancing',
+      },
+      minhyuk: {
+        animation: 'SambaDancing',
+      },
+    },
+    canvasColor: 'color-default',
+  },
 ];
 
 
