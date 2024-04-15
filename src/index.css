@@ -170,9 +170,14 @@ h5 {
   align-items: stretch;
   justify-content: flex-start;
 
-  padding: 20px;
-  background: linear-gradient(19deg, rgba(213, 234, 255, 0.5) 0%, rgba(255, 252, 253, 0.5) 100%);
-  backdrop-filter: blur(30px);
+  padding: 20px 0 0;
+  background: linear-gradient(19deg, rgba(213, 234, 255, 0.7) 0%, rgba(255, 252, 253, 0.7) 100%);
+  backdrop-filter: blur(30px) saturate(180%);
+
+  .ui-box-left-right-space {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 
   .project-title {
     .company-name {
@@ -206,21 +211,31 @@ h5 {
     align-items: stretch;
     justify-content: flex-start;
     gap: 12px;
+    padding: 0 20px 20px;
     margin-top: 16px;
 
     .speech-bubble {
+      font-size: 12px;
       background-color: #B4FD4F;
       padding: 12px;
       border-radius: 8px;
       line-height: 2;
       font-weight: 500;
+      border: 1px solid #a6e949;
 
       &:nth-child(2) {
-        opacity: 0.5;
+        opacity: 0.8;
+        filter: blur(1px) saturate(0.8);
       }
 
       &:nth-child(n + 3) {
-        opacity: 0.3;
+        opacity: 0.5;
+        filter: blur(2px) saturate(0.5);
+      }
+
+      &:nth-child(n + 4) {
+        opacity: 0.5;
+        filter: blur(5px) saturate(0.3);
       }
     }
   }

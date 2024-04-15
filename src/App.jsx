@@ -237,8 +237,8 @@ function App() {
         <Tween />
       </Canvas>
       <div className="ui-box">
-        <hr className="hr" />
-        <div className="project-title">
+        <hr className="hr ui-box-left-right-space" />
+        <div className="project-title ui-box-left-right-space">
           <div className="company-name">
             <img className="logo" src="logo/styleport_logo_black.png" alt="STYLE PORT" />
           </div>
@@ -251,9 +251,9 @@ function App() {
             <li>bae_minhyuk</li>
           </ul>
         </div>
-        <hr className="hr" />
-        <h5>Slide Show</h5>
-        <div className="control-area">
+        <hr className="hr ui-box-left-right-space" />
+        <h5 className="ui-box-left-right-space">Slide Show</h5>
+        <div className="control-area ui-box-left-right-space">
           <button
             type="button"
             className="icon-button green"
@@ -283,9 +283,9 @@ function App() {
             <ReactSVG src="/icons/arrowshape-right.svg" />
           </button>
         </div>
-        <hr className="hr" />
-        <h5>Talk Script</h5>
-        <div className="control-area">
+        <hr className="hr ui-box-left-right-space" />
+        <h5 className="ui-box-left-right-space">Talk Script</h5>
+        <div className="control-area ui-box-left-right-space">
           <button
             type="button"
             className="icon-button green"
