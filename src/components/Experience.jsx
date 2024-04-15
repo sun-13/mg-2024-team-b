@@ -40,7 +40,7 @@ export const Experience = (props) => {
         lipData={lipData} />
       <Environment preset="sunset" />
       <FadingImage
-        position={[0, 3, 0.1]}
+        position={[0, 3, 0]}
         image1={image1}
         image2={image2} />
     </>
