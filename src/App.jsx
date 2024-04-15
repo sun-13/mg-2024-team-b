@@ -317,6 +317,7 @@ function App() {
         <div className="speech-area">
           {speechTextArray.map((o, index) => (
           <div key={o.id} className="speech-bubble">
+              {/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
               <p dangerouslySetInnerHTML={{__html: o.text}} />
           </div>
           ))}
