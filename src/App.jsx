@@ -240,6 +240,7 @@ function App() {
           <button
             type="button"
             className="icon-button green"
+            title="Previous Slide"
             onClick={() => changeSlide(-1)}
           >
             <ReactSVG src="/icons/arrowshape-left.svg" />
@@ -259,6 +260,7 @@ function App() {
           <button
             type="button"
             className="icon-button green"
+            title="Next Slide"
             onClick={() => changeSlide(1)}
           >
             <ReactSVG src="/icons/arrowshape-right.svg" />
@@ -270,6 +272,7 @@ function App() {
           <button
             type="button"
             className="icon-button green"
+            title="Reset Camera"
             onClick={resetCamera}
           >
             <ReactSVG src="/icons/camera-reset.svg" />
@@ -289,6 +292,7 @@ function App() {
           {!isPlayingPresentation && <button
             type="button"
             className="icon-button green"
+            title="Play"
             onClick={play}
             disabled={isPlayingPresentation || currentPresentationIndex >= presentation.length}
           >
