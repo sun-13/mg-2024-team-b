@@ -5,7 +5,7 @@ import { Yasushi } from "./avatar/Yasushi";
 import { Yato } from "./avatar/Yato";
 import { Minhyuk } from "./avatar/Minhyuk";
 import { useThree } from "@react-three/fiber";
-import { TextureLoader, MeshBasicMaterial, sRGBEncoding } from "three";
+import { TextureLoader, MeshBasicMaterial, sRGBEncoding, DoubleSide } from "three";
 
 const textureLoader = new TextureLoader();
 const defaultSlide = 'slides/cover.png';
@@ -21,6 +21,7 @@ export const Experience = (props) => {
     textureLoader.load(url, (t) => {
       t.encoding = sRGBEncoding;
       const material = new MeshBasicMaterial({ map: t });
+      material.side = DoubleSide;
       slideRef.current.material = material;
       slideRef.current.needsUpdate = true;
     });

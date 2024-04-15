@@ -65,7 +65,7 @@ export const presentation = [
   ---------------------------------- */
   {
     id: 'intro_1',
-    title: 'intro_1',
+    title: '挨拶(1)',
     personProps: {
       sun: {
         animation: 'HandRaising',
@@ -79,7 +79,7 @@ export const presentation = [
   // ----------------------------------
   {
     id: 'intro_2',
-    title: 'intro_2',
+    title: '挨拶(2)',
     personProps: {
       yasushi: {
         animation: 'HandRaising',
@@ -94,7 +94,7 @@ export const presentation = [
   // ----------------------------------
   {
     id: 'intro_3',
-    title: 'intro_3',
+    title: '挨拶(3)',
     personProps: {
       yato: {
         animation: 'HandRaising',
@@ -108,7 +108,7 @@ export const presentation = [
   // ----------------------------------
   {
     id: 'intro_4',
-    title: 'intro_4',
+    title: '挨拶(4)',
     personProps: {
       minhyuk: {
         animation: 'HandRaising',
