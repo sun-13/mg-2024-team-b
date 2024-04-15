@@ -187,6 +187,12 @@ function App() {
     }
   }
 
+  const handleSlideSelect = (e) => {
+    const id = e.target.value;
+    const index = slideShow.findIndex((data) => data.id === id);
+    setCurrentSlideShowIndex(index);
+  };
+
   return (
     <>
       <Canvas shadows>
@@ -250,7 +256,7 @@ function App() {
             name="currentSlideShowIndex"
             id="currentSlideShowIndex"
             value={slideShow[currentSlideShowIndex].id}
-            onChange={(e) => setCurrentSlideShowIndex(Number(e.target.value))}>
+            onChange={handleSlideSelect}>
             {
               slideShow.map((data, index) => (
                 <option key={data.id} value={data.id}>{data.title}</option>

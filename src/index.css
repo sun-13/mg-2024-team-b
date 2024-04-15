@@ -167,8 +167,12 @@ h5 {
       line-height: 2;
       font-weight: 500;
 
-      &:not(:first-child) {
+      &:nth-child(2) {
         opacity: 0.5;
+      }
+
+      &:nth-child(n + 3) {
+        opacity: 0.3;
       }
     }
   }
