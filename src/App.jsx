@@ -179,6 +179,14 @@ function App() {
     setAudio(null);
   }
 
+  const changeSlide = (direction = 1) => {
+    if (direction === 1) {
+      setCurrentSlideShowIndex((currentSlideShowIndex + 1) % slideShow.length);
+    } else {
+      setCurrentSlideShowIndex((currentSlideShowIndex - 1 + slideShow.length) % slideShow.length);
+    }
+  }
+
   return (
     <>
       <Canvas shadows>
@@ -203,7 +211,6 @@ function App() {
             defaultCameraPosition.y,
             defaultCameraPosition.z]}
           fov={60}
-
         />
         <OrbitControls ref={controls} />
         <Experience
@@ -233,20 +240,26 @@ function App() {
           <button
             type="button"
             className="icon-button green"
+            onClick={() => changeSlide(-1)}
           >
             <ReactSVG src="/icons/arrowshape-left.svg" />
           </button>
           <select
             className="select flex-1"
             name="currentSlideShowIndex"
-            id="currentSlideShowIndex">
-            <option value="0">Slide 1</option>
-            <option value="1">Slide 2</option>
-            <option value="2">Slide 3</option>
+            id="currentSlideShowIndex"
+            value={slideShow[currentSlideShowIndex].id}
+            onChange={(e) => setCurrentSlideShowIndex(Number(e.target.value))}>
+            {
+              slideShow.map((data, index) => (
+                <option key={data.id} value={data.id}>{data.title}</option>
+              ))
+            }
           </select>
           <button
             type="button"
             className="icon-button green"
+            onClick={() => changeSlide(1)}
           >
             <ReactSVG src="/icons/arrowshape-right.svg" />
           </button>
