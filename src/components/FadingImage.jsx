@@ -2,7 +2,7 @@ import { shaderMaterial, useTexture } from "@react-three/drei";
 import { extend, useFrame } from "@react-three/fiber";
 import { easing, geometry } from "maath";
 import { useRef, useMemo } from "react";
-import { TextureLoader, DoubleSide } from "three";
+import { TextureLoader, DoubleSide, MeshBasicMaterial } from "three";
 
 const textureLoader = new TextureLoader();
 

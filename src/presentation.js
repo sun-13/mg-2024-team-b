@@ -43,7 +43,7 @@ export const presentation = [
     title: '挨拶(2)',
     personProps: {
       yasushi: {
-        animation: 'HandRaising',
+        animation: 'Talking',
         isSpeaking: true,
       },
     },
@@ -194,7 +194,7 @@ export const presentation = [
       },
     },
     camera: cameras.slideFocusYato,
-    text: 'また、お部屋だけでなく建物、周辺環境までを体験できる「ROOV .space」。新たに今春、提供を開始しました。あらゆるカメラアングルで空間イメージができ、まるで本当にその場で見ているような感覚で、現実以上の自由さで、新たなデジタルツイン体験できます。',
+    text: 'また、お部屋だけでなく建物、周辺環境までを体験できる「ROOV.space」。新たに今春、提供を開始しました。あらゆるカメラアングルで空間イメージができ、まるで本当にその場で見ているような感覚で、現実以上の自由さで、新たなデジタルツイン体験ができます。',
     audio: '/audios/2_roov_3.ogg',
     lip: '/lips/2_roov_3.json',
     canvasColor: 'color-yellow',
