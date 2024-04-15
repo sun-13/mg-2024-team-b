@@ -8,8 +8,8 @@ const textureLoader = new TextureLoader();
 
 export const ImageFadeMaterial = shaderMaterial(
   {
-    effectFactor: 1.2,
-    dispFactor: 0,
+    effectFactor: 0.1,
+    dispFactor: 0.1,
     tex: undefined,
     tex2: undefined,
     side: DoubleSide,
@@ -46,7 +46,7 @@ export const ImageFadeMaterial = shaderMaterial(
     void main() {
       vec2 uv = vUv;
 
-      float noiseFactor = noise(gl_FragCoord.xy * 0.4);
+      float noiseFactor = noise(gl_FragCoord.xy * 0.6);
 
       vec2 distortedPosition = vec2(uv.x + dispFactor * noiseFactor, uv.y);
       vec2 distortedPosition2 = vec2(uv.x - (1.0 - dispFactor) * noiseFactor, uv.y);
@@ -72,7 +72,7 @@ export const FadingImage = (props) => {
   const texture2 = useMemo(() => textureLoader.load(image2), [image2]);
 
   useFrame((_state, delta) => {
-    easing.damp(ref.current, "dispFactor", 1, 0.4, delta);
+    easing.damp(ref.current, 'dispFactor', 1, 0.4, delta);
   });
   return (
     <mesh

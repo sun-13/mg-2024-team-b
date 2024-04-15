@@ -31,8 +31,46 @@ html {
 }
 
 body {
-  background-image: linear-gradient(19deg, #a680db 0%, #cbf7fe 100%);
   margin: 0;
+}
+
+@property --canvasColor1 {
+  syntax: "<color>";
+  initial-value: #dffffc;
+  inherits: false;
+}
+
+@property --canvasColor2 {
+  syntax: "<color>";
+  initial-value: #88d4ff;
+  inherits: false;
+}
+
+.canvas {
+  background: linear-gradient(180deg, var(--canvasColor1) 0%, var(--canvasColor2) 100%);
+  transition:
+    --canvasColor1 0.5s ease-in-out,
+    --canvasColor2 0.5s ease-in-out;
+
+  &.color-red {
+    --canvasColor1: #ffbcbd;
+    --canvasColor2: #ffb2a9;
+  }
+
+  &.color-yellow {
+    --canvasColor1: #fffadd;
+    --canvasColor2: #ffef97;
+  }
+
+  &.color-green {
+    --canvasColor1: #f7ffeb;
+    --canvasColor2: #d9ffa1;
+  }
+
+  &.color-blue {
+    --canvasColor1: #e8f0ff;
+    --canvasColor2: #8e96ff;
+  }
 }
 
 .hr {
@@ -78,7 +116,7 @@ h5 {
 
   width: 40px;
   background-color: #000;
-  border: none;
+  border: 1px solid #000;
   transition: all 0.3s ease;
 
   img, svg {
@@ -90,6 +128,7 @@ h5 {
 
   &.red {
     background: #FF4D4F;
+    border-color: #e83336;
 
     svg path{
       fill: #fff;
@@ -102,6 +141,7 @@ h5 {
 
   &.green {
     background: #B4FD4F;
+    border-color: #a6e949;
 
     svg path{
       fill: #1F212A;
@@ -131,12 +171,20 @@ h5 {
   justify-content: flex-start;
 
   padding: 20px;
-  background: rgba(255, 255, 255, 0.5);
+  background: linear-gradient(19deg, rgba(213, 234, 255, 0.5) 0%, rgba(255, 252, 253, 0.5) 100%);
   backdrop-filter: blur(30px);
 
   .project-title {
+    .company-name {
+      .logo {
+        display: block;
+        height: 9px;
+      }
+    }
+
     .project-name {
       font-size: 12px;
+      margin-top: 4px;
     }
   }
 

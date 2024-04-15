@@ -60,6 +60,7 @@ function App() {
   const [currentPresentationIndex, setCurrentPresentationIndex] = useState(0);
   const [isPlayingPresentation, setIsPlayingPresentation] = useState(false);
   const [speechTextArray, setSpeechTextArray] = useState([]);
+  const [canvasColor, setCanvasColor] = useState("color-default");
 
   // slide show
   const [currentSlideShowIndex, setCurrentSlideShowIndex] = useState(0);
@@ -166,6 +167,13 @@ function App() {
       });
       setSpeechTextArray(newSpeechArray);
     }
+
+    // set canvas color
+    if (data.canvasColor) {
+      setCanvasColor(data.canvasColor);
+    } else {
+      setCanvasColor('color-default');
+    }
   }
 
   const stop = () => {
@@ -195,7 +203,7 @@ function App() {
 
   return (
     <>
-      <Canvas shadows>
+      <Canvas className={`canvas ${canvasColor}`}shadows>
         {/* <color attach="background" args={["#f00"]} /> */}
         <directionalLight
           intensity={1}
@@ -231,7 +239,10 @@ function App() {
       <div className="ui-box">
         <hr className="hr" />
         <div className="project-title">
-          <p className="project-name">Meet & Greet</p>
+          <div className="company-name">
+            <img className="logo" src="logo/styleport_logo_black.png" alt="STYLE PORT" />
+          </div>
+          <p className="project-name">Product Group Meet & Greet 2024</p>
           <h1>Team B</h1>
           <ul className="members-list">
             <li>sun_xuan</li>
