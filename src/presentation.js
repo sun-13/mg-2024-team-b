@@ -471,12 +471,122 @@ export const presentation = [
 export const slideShow = [
   {
     id: 'cover',
-    title: 'cover',
-    image: '/slides/cover.png',
+    title: 'Cover',
+    image: '/slides/lip-sync.001.png',
   },
   {
     id: 'what-is-lip-sync',
-    title: 'What is Lip Sync?',
-    image: '/slides/what-is-lip-sync.png',
-  }
+    title: 'Lip Sync とは',
+    image: '/slides/lip-sync.002.png',
+  },
+  {
+    id: 'theme-reason',
+    title: 'テーマの選定理由',
+    image: '/slides/lip-sync.003.png',
+  },
+  {
+    id: 'implementation',
+    title: '実装方法',
+    image: '/slides/lip-sync.004.png',
+  },
+  {
+    id: 'eleven-labs',
+    title: 'Eleven Labs',
+    image: '/slides/lip-sync.005.png',
+  },
+  {
+    id: 'rhubarb-lip-sync',
+    title: 'Rhubarb Lip Sync',
+    image: '/slides/lip-sync.006.png',
+  },
+  {
+    id: 'ready-player-me',
+    title: 'Ready Player Me',
+    image: '/slides/lip-sync.007.png',
+  },
+  {
+    id: 'ready-player-me-screenshot',
+    title: 'Ready Player Me (screenshot)',
+    image: '/slides/lip-sync.008.png',
+  },
+  {
+    id: 'mixamo',
+    title: 'Mixamo',
+    image: '/slides/lip-sync.009.png',
+  },
+  {
+    id: 'shine',
+    title: '使われてこそ輝く',
+    image: '/slides/lip-sync.010.png',
+  },
+  {
+    id: 'case-1',
+    title: 'Case 1',
+    image: '/slides/lip-sync.011.png',
+  },
+  {
+    id: 'case-1-1',
+    title: 'Case 1-1',
+    image: '/slides/lip-sync.012.png',
+  },
+  {
+    id: 'case-1-2',
+    title: 'Case 1-2',
+    image: '/slides/lip-sync.013.png',
+  },
+  {
+    id: 'case-1-3',
+    title: 'Case 1-3',
+    image: '/slides/lip-sync.014.png',
+  },
+  {
+    id: 'case-1-4',
+    title: 'Case 1-4',
+    image: '/slides/lip-sync.015.png',
+  },
+  {
+    id: 'case-2',
+    title: 'Case 2',
+    image: '/slides/lip-sync.016.png',
+  },
+  {
+    id: 'case-2-1',
+    title: 'Case 2-1',
+    image: '/slides/lip-sync.017.png',
+  },
+  {
+    id: 'case-2-2',
+    title: 'Case 2-2',
+    image: '/slides/lip-sync.018.png',
+  },
+  {
+    id: 'case-2-3',
+    title: 'Case 2-3',
+    image: '/slides/lip-sync.019.png',
+  },
+  {
+    id: 'case-2-4',
+    title: 'Case 2-4',
+    image: '/slides/lip-sync.020.png',
+  },
+  {
+    id: 'pro-con',
+    title: 'メリット・デメリット',
+    image: '/slides/lip-sync.021.png',
+  },
+  {
+    id: 'q-and-a',
+    title: 'Q&A',
+    image: '/slides/lip-sync.022.png',
+  },
+  {
+    id: 'langue-twister',
+    title: '早口言葉',
+    image: '/slides/lip-sync.023.png',
+  },
+  {
+    id: 'thank-you',
+    title: 'Thank you!',
+    image: '/slides/lip-sync.024.png',
+  },
 ];

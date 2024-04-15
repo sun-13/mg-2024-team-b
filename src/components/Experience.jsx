@@ -6,12 +6,13 @@ import { Yato } from "./avatar/Yato";
 import { Minhyuk } from "./avatar/Minhyuk";
 import { useThree } from "@react-three/fiber";
 import { FadingImage } from "./FadingImage";
+import { slideShow } from '@/presentation.js';
 
 export const Experience = (props) => {
   const { personProps, audio, lipData, slideShowImage } = props;
   const viewport = useThree((state) => state.viewport);
-  const [image1, setImage1] = useState('slides/cover.png');
-  const [image2, setImage2] = useState('slides/cover.png');
+  const [image1, setImage1] = useState(slideShow[0].image);
+  const [image2, setImage2] = useState(slideShow[1].image);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {

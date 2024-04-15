@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Experience } from './components/Experience';
 import { Loader, PerspectiveCamera, OrbitControls } from '@react-three/drei';
-import { presentation, slideShow } from './presentation';
+import { presentation, slideShow } from '@/presentation.js';
 import TWEEN from '@tweenjs/tween.js';
 import { ReactSVG } from 'react-svg'
 
@@ -82,11 +82,6 @@ function App() {
       .to(defaultCameraPosition, cameraTransitionDuration)
       .easing(TWEEN.Easing.Cubic.Out)
       .start();
-  };
-
-  const resetState = () => {
-    stop();
-    resetCamera();
   };
 
   const play = async () => {
@@ -272,10 +267,11 @@ function App() {
             name="currentSlideShowIndex"
             id="currentSlideShowIndex"
             value={slideShow[currentSlideShowIndex].id}
-            onChange={handleSlideSelect}>
+            onChange={handleSlideSelect}
+            style={{width: "10px"}}>
             {
               slideShow.map((data, index) => (
-                <option key={data.id} value={data.id}>{data.title}</option>
+                <option key={data.id} value={data.id}>{index + 1} - {data.title}</option>
               ))
             }
           </select>
@@ -295,7 +291,7 @@ function App() {
             type="button"
             className="icon-button green"
             title="Reset Camera"
-            onClick={resetState}
+            onClick={resetCamera}
           >
             <ReactSVG src="/icons/camera-reset.svg" />
           </button>
