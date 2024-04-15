@@ -42,12 +42,12 @@ const initialPersonProps = {
 };
 const defaultCameraPosition = {
   x: -2,
-  y: 2,
-  z: 15,
+  y: 1.5,
+  z: 12,
 };
 const defaultCameraLookAt = {
   x: -2,
-  y: 2,
+  y: 1.5,
   z: 0,
 };
 
