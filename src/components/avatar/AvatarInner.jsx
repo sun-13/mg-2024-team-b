@@ -12,7 +12,7 @@ import * as THREE from 'three';
 // TODO: 一旦それっぽい感じにしてみたので要調整
 const morphTargetSmoothing = 0.7;
 const morphTargetScale = 1.2;
-const mouthAnimationStep = 0.01; // not per frame, but per millisecond
+const mouthAnimationStep = 10; // per second
 
 const visemeCorresponding = {
   A: "viseme_PP",
@@ -51,8 +51,6 @@ export function AvatarInner(props) {
   const group = useRef();
   const { actions } = useAnimations(animations, group);
 
-  const [timeStamp, setTimeStamp] = useState(Date.now());
-
   useEffect(() => {
     actions[animation].reset().fadeIn(0.5).play();
     return () => actions[animation].fadeOut(0.5);
@@ -68,21 +66,16 @@ export function AvatarInner(props) {
     }
   }, [isSpeaking, from, animation, audio, lipData]);
 
-  useFrame(() => {
-    handleFrameViseme();
+  useFrame((_state, delta) => {
+    handleFrameViseme(delta);
   });
 
   const [currentMouth, setCurrentMouth] = useState(null);
   const [currentMouthScale, setCurrentMouthScale] = useState(0);
 
   // Viseme
-  const handleFrameViseme = () => {
-    // calculate time difference
-    const newTimeStamp = Date.now();
-    const timeDiff = newTimeStamp - timeStamp;
-    setTimeStamp(newTimeStamp);
-
-    if (!timeDiff) {
+  const handleFrameViseme = (delta) => {
+    if (!delta) {
       return;
     }
 
@@ -100,7 +93,7 @@ export function AvatarInner(props) {
         // determine transition out or in
         const direction = mouthCue.value === currentMouth ? 1 : -1;
         const newMouthCueValue = !currentMouth || (currentMouth !== mouthCue.value && currentMouthScale <= 0) ? mouthCue.value : currentMouth;
-        const _newScale = currentMouthScale + direction * mouthAnimationStep * timeDiff;
+        const _newScale = currentMouthScale + direction * mouthAnimationStep * delta;
         const newScale = Math.min(1, Math.max(0, _newScale));
 
         nodes.Wolf3D_Head.morphTargetInfluences[
