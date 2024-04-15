@@ -1,56 +1,57 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Experience } from './components/Experience';
 import { Loader, PerspectiveCamera, OrbitControls } from '@react-three/drei';
-import { presentation } from './presentation';
+import { presentation, slideShow } from './presentation';
 import TWEEN from '@tweenjs/tween.js';
+import { ReactSVG } from 'react-svg'
 
 function Tween() {
   useFrame(() => {
-    TWEEN.update()
+    TWEEN.update();
   })
 }
 const persons = ["sun", "yasushi", "yato", "minhyuk"];
 const cameraTransitionDuration = 1000;
 let currentAudio = null;
 
-function App() {
+// default settings
+const personPositionY = -3.2;
+const personPositionZ = 2;
+const initialPersonProps = {
+  sun: {
+    position: [-2.4, personPositionY, personPositionZ],
+    animation: "IdleLookHand",
+    isSpeaking: false,
+  },
+  yasushi: {
+    position: [-0.8, personPositionY, personPositionZ],
+    animation: "Happy",
+    isSpeaking: false,
+  },
+  yato: {
+    position: [0.8, personPositionY, personPositionZ],
+    animation: "Idle",
+    isSpeaking: false,
+  },
+  minhyuk: {
+    position: [2.4, personPositionY, personPositionZ],
+    animation: "IdleHappy",
+    isSpeaking: false,
+  },
+};
+const defaultCameraPosition = {
+  x: -2,
+  y: 2,
+  z: 15,
+};
+const defaultCameraLookAt = {
+  x: -2,
+  y: 2,
+  z: 0,
+};
 
-  // default settings
-  const personPositionY = -3.2;
-  const personPositionZ = 2;
-  const initialPersonProps = {
-    sun: {
-      position: [-2.4, personPositionY, personPositionZ],
-      animation: "IdleLookHand",
-      isSpeaking: false,
-    },
-    yasushi: {
-      position: [-0.8, personPositionY, personPositionZ],
-      animation: "Happy",
-      isSpeaking: false,
-    },
-    yato: {
-      position: [0.8, personPositionY, personPositionZ],
-      animation: "Idle",
-      isSpeaking: false,
-    },
-    minhyuk: {
-      position: [2.4, personPositionY, personPositionZ],
-      animation: "IdleHappy",
-      isSpeaking: false,
-    },
-  };
-  const defaultCameraPosition = {
-    x: 0,
-    y: 0,
-    z: 10,
-  };
-  const defaultCameraLookAt = {
-    x: 0,
-    y: 0,
-    z: 0,
-  };
+function App() {
 
   // state
   const [audio, setAudio] = useState(null);
@@ -58,14 +59,20 @@ function App() {
   const [personProps, setPersonProps] = useState(initialPersonProps);
   const [currentPresentationIndex, setCurrentPresentationIndex] = useState(0);
   const [isPlayingPresentation, setIsPlayingPresentation] = useState(false);
-  const [speechText, setSpeechText] = useState('');
   const [speechTextArray, setSpeechTextArray] = useState([]);
+
+  // slide show
+  const [currentSlideShowIndex, setCurrentSlideShowIndex] = useState(0);
+  const slideShowImage = useMemo(() => slideShow[currentSlideShowIndex].image, [currentSlideShowIndex]);
 
   // ref
   const camera = useRef(null);
   const controls = useRef(null);
 
   const resetCamera = () => {
+    if (!controls.current || !camera.current) {
+      return;
+    }
     new TWEEN.Tween(controls.current.target)
       .to(defaultCameraLookAt, cameraTransitionDuration)
       .easing(TWEEN.Easing.Cubic.Out)
@@ -170,17 +177,33 @@ function App() {
     setIsPlayingPresentation(false);
     setLipData(null);
     setAudio(null);
-    setSpeechText('');
   }
 
   return (
     <>
       <Canvas shadows>
         {/* <color attach="background" args={["#f00"]} /> */}
+        <directionalLight
+          intensity={1}
+          castShadow={true}
+          shadow-bias={-0.0002}
+          shadow-mapSize={[2048, 2048]}
+          position={[85.0, 80.0, 70.0]}
+          shadow-camera-left={-30}
+          shadow-camera-right={30}
+          shadow-camera-top={30}
+          shadow-camera-bottom={-30}
+        />
+        <ambientLight intensity={0.2} />
         <PerspectiveCamera
           ref={camera}
           makeDefault
-          position={[defaultCameraPosition.x, defaultCameraPosition.y, defaultCameraPosition.z]}
+          position={[
+            defaultCameraPosition.x,
+            defaultCameraPosition.y,
+            defaultCameraPosition.z]}
+          fov={60}
+
         />
         <OrbitControls ref={controls} />
         <Experience
@@ -188,6 +211,7 @@ function App() {
           controls={controls}
           lipData={lipData}
           audio={audio}
+          slideShowImage={slideShowImage}
         />
         <Tween />
       </Canvas>
@@ -204,13 +228,46 @@ function App() {
           </ul>
         </div>
         <hr className="hr" />
+        <h5>Slide Show</h5>
         <div className="control-area">
+          <button
+            type="button"
+            className="icon-button green"
+          >
+            <ReactSVG src="/icons/arrowshape-left.svg" />
+          </button>
           <select
-            className="select index-select"
+            className="select flex-1"
+            name="currentSlideShowIndex"
+            id="currentSlideShowIndex">
+            <option value="0">Slide 1</option>
+            <option value="1">Slide 2</option>
+            <option value="2">Slide 3</option>
+          </select>
+          <button
+            type="button"
+            className="icon-button green"
+          >
+            <ReactSVG src="/icons/arrowshape-right.svg" />
+          </button>
+        </div>
+        <hr className="hr" />
+        <h5>Talk Script</h5>
+        <div className="control-area">
+          <button
+            type="button"
+            className="icon-button green"
+            onClick={resetCamera}
+          >
+            <ReactSVG src="/icons/camera-reset.svg" />
+          </button>
+          <select
+            className="select index-select flex-1"
             name="currentPrensentationIndex"
             id="currentPrensentationIndex"
             value={currentPresentationIndex >= presentation.length ? 0 : currentPresentationIndex}
             onChange={(e) => setCurrentPresentationIndex(Number(e.target.value))}
+            style={{width: "10px"}}
           >
             {presentation.map((data, index) => (
               <option key={data.id} value={index}>{data.title}</option>
@@ -218,11 +275,11 @@ function App() {
           </select>
           {!isPlayingPresentation && <button
             type="button"
-            className="icon-button play-button"
+            className="icon-button green"
             onClick={play}
             disabled={isPlayingPresentation || currentPresentationIndex >= presentation.length}
           >
-            <img src="/icons/play.svg" alt="Play" />
+            <ReactSVG src="/icons/play.svg" />
           </button>}
           {isPlayingPresentation && <button
             type="button"
@@ -230,7 +287,7 @@ function App() {
             onClick={stop}
             disabled={!isPlayingPresentation}
           >
-            <img src="/icons/stop.svg" alt="Stop" />
+            <ReactSVG src="/icons/stop.svg" />
           </button>}
         </div>
         {speechTextArray?.length > 0 &&

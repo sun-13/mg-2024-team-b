@@ -458,3 +458,17 @@ export const presentation = [
     lip: '/lips/4_lt_10.json',
   },
 ];
+
+
+export const slideShow = [
+  {
+    id: 'cover',
+    title: 'cover',
+    image: '/slides/cover.png',
+  },
+  {
+    id: 'what-is-lip-sync',
+    title: 'What is Lip Sync?',
+    image: '/slides/what-is-lip-sync.png',
+  }
+];

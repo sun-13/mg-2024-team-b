@@ -45,6 +45,15 @@ h1 {
   font-size: 32px;
 }
 
+h5 {
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
 .select,
 .icon-button {
   height: 40px;
@@ -57,9 +66,6 @@ h1 {
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
-  /* -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none; */
   border: 1px solid #ccc;
   background: #fff;
   padding: 0 12px;
@@ -71,10 +77,11 @@ h1 {
   justify-content: center;
 
   width: 40px;
-  background-color: #B4FD4F;
+  background-color: #000;
   border: none;
+  transition: all 0.3s ease;
 
-  img {
+  img, svg {
     display: block;
     width: 18px;
     height: 18px;
@@ -82,11 +89,27 @@ h1 {
   }
 
   &.red {
-    background-color: #FF4D4F;
+    background: #FF4D4F;
+
+    svg path{
+      fill: #fff;
+    }
+
+    &:hover {
+      background: #e83336;
+    }
   }
 
   &.green {
-    background-color: #B4FD4F;
+    background: #B4FD4F;
+
+    svg path{
+      fill: #1F212A;
+    }
+
+    &:hover {
+      background: #a6e949;
+    }
   }
 }
 
@@ -120,10 +143,6 @@ h1 {
   .control-area {
     display: flex;
     gap: 12px;
-
-    .select {
-      flex: 1;
-    }
 
     .icon-button {
       flex-shrink: 0;
