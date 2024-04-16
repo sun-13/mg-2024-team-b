@@ -70,16 +70,16 @@ function App() {
   const camera = useRef(null);
   const controls = useRef(null);
 
-  const resetCamera = () => {
+  const resetCamera = (duration = cameraTransitionDuration) => {
     if (!controls.current || !camera.current) {
       return;
     }
     new TWEEN.Tween(controls.current.target)
-      .to(defaultCameraLookAt, cameraTransitionDuration)
+      .to(defaultCameraLookAt, duration)
       .easing(TWEEN.Easing.Cubic.Out)
       .start();
     new TWEEN.Tween(camera.current.position)
-      .to(defaultCameraPosition, cameraTransitionDuration)
+      .to(defaultCameraPosition, duration)
       .easing(TWEEN.Easing.Cubic.Out)
       .start();
   };
@@ -221,9 +221,9 @@ function App() {
           ref={camera}
           makeDefault
           position={[
-            defaultCameraPosition.x,
-            defaultCameraPosition.y,
-            defaultCameraPosition.z]}
+            0,
+            50,
+            100]}
           fov={60}
         />
         <OrbitControls ref={controls} />
@@ -233,6 +233,7 @@ function App() {
           lipData={lipData}
           audio={audio}
           slideShowImage={slideShowImage}
+          resetCamera={resetCamera}
         />
         <Tween />
       </Canvas>

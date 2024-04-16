@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { Environment, useTexture } from "@react-three/drei";
+import { Environment } from "@react-three/drei";
 import { Sun } from "./avatar/Sun";
 import { Yasushi } from "./avatar/Yasushi";
 import { Yato } from "./avatar/Yato";
@@ -9,10 +9,11 @@ import { FadingImage } from "./FadingImage";
 import { slideShow } from '@/presentation.js';
 
 export const Experience = (props) => {
-  const { personProps, audio, lipData, slideShowImage } = props;
+  const { personProps, audio, lipData, slideShowImage, resetCamera } = props;
   const viewport = useThree((state) => state.viewport);
   const [image1, setImage1] = useState(slideShow[0].image);
   const [image2, setImage2] = useState(slideShow[1].image);
+  const [isMounted, setIsMounted] = useState(false);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
@@ -20,6 +21,13 @@ export const Experience = (props) => {
     setImage2(slideShowImage);
   }
   , [slideShowImage]);
+
+  useEffect(() => {
+    if (!isMounted) {
+      resetCamera(5000);
+      setIsMounted(true);
+    }
+  });
 
   return (
     <>
