@@ -600,8 +600,13 @@ export const slideShow = [
     image: '/slides/lip-sync.026.png',
   },
   {
+    id: 'github',
+    title: 'GitHub',
+    image: '/slides/lip-sync.027.png',
+  },
+  {
     id: 'thank-you',
     title: 'Thank you!',
-    image: '/slides/lip-sync.027.png',
+    image: '/slides/lip-sync.028.png',
   },
 ];
