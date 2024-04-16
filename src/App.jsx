@@ -46,7 +46,7 @@ const initialPersonProps = {
   },
 };
 const defaultCameraPosition = {
-  x: 2,
+  x: 1,
   y: 1.5,
   z: 12,
 };

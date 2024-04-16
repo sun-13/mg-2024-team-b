@@ -75,8 +75,14 @@ body {
 
 .hr {
   margin: 20px 0;
-  border: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  border: none;
+
+  &:before {
+    content: '';
+    display: block;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.01) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.01) 100%);
+  }
 }
 
 h1 {
@@ -175,8 +181,8 @@ h5 {
   backdrop-filter: blur(30px) saturate(180%);
 
   .ui-box-left-right-space {
-    margin-left: 20px;
-    margin-right: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .project-title {
