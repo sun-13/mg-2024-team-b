@@ -292,7 +292,7 @@ function App() {
             type="button"
             className="icon-button green"
             title="Reset Camera"
-            onClick={resetCamera}
+            onClick={() => resetCamera()}
           >
             <ReactSVG src="/icons/camera-reset.svg" />
           </button>
