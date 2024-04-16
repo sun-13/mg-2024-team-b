@@ -9,10 +9,9 @@ import { AnimationConst } from '@/AnimationConst'
 import { useFrame } from "@react-three/fiber";
 import * as THREE from 'three';
 
-// TODO: 一旦それっぽい感じにしてみたので要調整
 const morphTargetSmoothing = 0.7;
 const morphTargetScale = 1.2;
-const mouthAnimationStep = 10; // per second
+const mouthAnimationStep = 10; // steps per second
 
 const visemeCorresponding = {
   A: "viseme_PP",
@@ -25,6 +24,9 @@ const visemeCorresponding = {
   H: "viseme_TH",
   X: "viseme_PP",
 };
+
+const idleAnimationNames = AnimationConst.filter((item) => item.label === 'Idle').map((item) => item.name);
+const animationInterval = 10; // seconds
 
 export function AvatarInner(props) {
   const {
@@ -41,13 +43,16 @@ export function AvatarInner(props) {
     ...props
   };
 
+  // states
+  const [currentMouth, setCurrentMouth] = useState(null);
+  const [currentMouthScale, setCurrentMouthScale] = useState(0);
+
   // import animations
   const animations = AnimationConst.map((item) => {
     const { animations: a } = useFBX(item.file);
     a[0].name = item.name;
     return a[0];
   });
-
   const group = useRef();
   const { actions } = useAnimations(animations, group);
 
@@ -67,14 +72,6 @@ export function AvatarInner(props) {
   }, [isSpeaking, from, animation, audio, lipData]);
 
   useFrame((_state, delta) => {
-    handleFrameViseme(delta);
-  });
-
-  const [currentMouth, setCurrentMouth] = useState(null);
-  const [currentMouthScale, setCurrentMouthScale] = useState(0);
-
-  // Viseme
-  const handleFrameViseme = (delta) => {
     if (!delta) {
       return;
     }
@@ -128,7 +125,7 @@ export function AvatarInner(props) {
         break;
       }
     }
-  };
+  });
 
   const initializeVisemeMorphTargets = () => {
     for (const value of Object.values(visemeCorresponding)) {

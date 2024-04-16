@@ -9,9 +9,9 @@
 const cameras = {
   // person focus
   sunFocus: { position: { x: -3, y: 0, z: 4 }, lookAt: { x: -2, y: 0, z: 0 }, },
-  yasushiFocus: { position: { x: -1, y: 0, z: 4 }, lookAt: { x: -0.5, y: 0, z: 0 }, },
-  yatoFocus: { position: { x: 1, y: 0, z: 4 }, lookAt: { x: 0.5, y: 0, z: 0 }, },
-  minhyukFocus: { position: { x: 3, y: 0, z: 4 }, lookAt: { x: 2, y: 0, z: 0 }, },
+  yasushiFocus: { position: { x: 0, y: 0.5, z: 4 }, lookAt: { x: -0.5, y: 0, z: 0 }, },
+  yatoFocus: { position: { x: 2, y: 0.5, z: 4 }, lookAt: { x: 0.5, y: 0, z: 0 }, },
+  minhyukFocus: { position: { x: 3, y: 0.25, z: 4 }, lookAt: { x: 2, y: 0, z: 0 }, },
   // slide focus
   slideFocusSun: { position: { x: -5, y: 0, z: 6 }, lookAt: { x: -2, y: 2, z: 0 }, },
   slideFocusYasushi: { position: { x: -2, y: 0, z: 6 }, lookAt: { x: -1, y: 2, z: 0 }, },
@@ -107,7 +107,7 @@ export const presentation = [
     title: '自己紹介（康志）',
     personProps: {
       yasushi: {
-        animation: 'HandRaising',
+        animation: 'Talking',
         isSpeaking: true,
       },
     },
@@ -123,7 +123,7 @@ export const presentation = [
     title: '自己紹介（矢戸）',
     personProps: {
       yato: {
-        animation: 'HandRaising',
+        animation: 'Talking',
         isSpeaking: true,
       },
     },
@@ -139,7 +139,7 @@ export const presentation = [
     title: '自己紹介（ミンヒョク）',
     personProps: {
       minhyuk: {
-        animation: 'HandRaising',
+        animation: 'Talking',
         isSpeaking: true,
       },
     },

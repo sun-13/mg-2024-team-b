@@ -24,7 +24,7 @@ export const Experience = (props) => {
 
   useEffect(() => {
     if (!isMounted) {
-      resetCamera(5000);
+      resetCamera(2500);
       setIsMounted(true);
     }
   });

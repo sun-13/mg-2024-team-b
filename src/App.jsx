@@ -31,17 +31,17 @@ const initialPersonProps = {
   },
   yato: {
     position: [0.8, personPositionY, personPositionZ],
-    animation: "Idle",
+    animation: "Excited",
     isSpeaking: false,
   },
   minhyuk: {
     position: [2.4, personPositionY, personPositionZ],
-    animation: "IdleHappy",
+    animation: "IdleHappy2",
     isSpeaking: false,
   },
 };
 const defaultCameraPosition = {
-  x: -2,
+  x: 2,
   y: 1.5,
   z: 12,
 };
@@ -222,8 +222,8 @@ function App() {
           makeDefault
           position={[
             0,
-            50,
-            100]}
+            20,
+            200]}
           fov={60}
         />
         <OrbitControls ref={controls} />
