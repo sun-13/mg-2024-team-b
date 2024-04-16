@@ -467,146 +467,158 @@ export const presentation = [
   },
 ];
 
+let slideIndex = 0;
+
+function getSlideUrl() {
+  slideIndex++;
+  let num = slideIndex;
+  if (num < 10) {
+    num = `00${num}`;
+  } else if (num < 100) {
+    num = `0${num}`;
+  }
+  return `/slides/lip-sync.${num}.png`
+}
 
 export const slideShow = [
   {
     id: 'cover',
     title: 'Cover',
-    image: '/slides/lip-sync.001.png',
+    image: getSlideUrl(),
   },
   {
     id: 'what-is-lip-sync',
     title: 'Lip Sync とは',
-    image: '/slides/lip-sync.002.png',
+    image: getSlideUrl(),
   },
   {
     id: 'theme-reason',
     title: 'テーマの選定理由',
-    image: '/slides/lip-sync.003.png',
+    image: getSlideUrl(),
   },
   {
     id: 'implementation',
     title: '実装方法',
-    image: '/slides/lip-sync.004.png',
+    image: getSlideUrl(),
   },
   {
     id: 'eleven-labs',
     title: 'Eleven Labs',
-    image: '/slides/lip-sync.005.png',
+    image: getSlideUrl(),
   },
   {
     id: 'ready-player-me',
     title: 'Ready Player Me',
-    image: '/slides/lip-sync.006.png',
+    image: getSlideUrl(),
   },
   {
     id: 'ready-player-me-screenshot',
     title: 'Ready Player Me (screenshot)',
-    image: '/slides/lip-sync.007.png',
+    image: getSlideUrl(),
   },
   {
     id: 'mixamo',
     title: 'Mixamo',
-    image: '/slides/lip-sync.008.png',
+    image: getSlideUrl(),
   },
   {
     id: 'rhubarb-lip-sync',
     title: 'Rhubarb Lip Sync',
-    image: '/slides/lip-sync.009.png',
+    image: getSlideUrl(),
   },
   {
     id: 'lip-data',
     title: 'Lip Data',
-    image: '/slides/lip-sync.010.png',
+    image: getSlideUrl(),
   },
   {
     id: 'morph-targets',
     title: 'Morph Targets',
-    image: '/slides/lip-sync.011.png',
+    image: getSlideUrl(),
   },
   {
     id: 'morph-targets-implementation',
     title: 'Morph Targets (実装方法)',
-    image: '/slides/lip-sync.012.png',
+    image: getSlideUrl(),
   },
   {
     id: 'shine',
     title: '使われてこそ輝く',
-    image: '/slides/lip-sync.013.png',
+    image: getSlideUrl(),
   },
   {
     id: 'case-1',
     title: 'Case 1',
-    image: '/slides/lip-sync.014.png',
+    image: getSlideUrl(),
   },
   {
     id: 'case-1-1',
     title: 'Case 1-1',
-    image: '/slides/lip-sync.015.png',
+    image: getSlideUrl(),
   },
   {
     id: 'case-1-2',
     title: 'Case 1-2',
-    image: '/slides/lip-sync.016.png',
+    image: getSlideUrl(),
   },
   {
     id: 'case-1-3',
     title: 'Case 1-3',
-    image: '/slides/lip-sync.017.png',
+    image: getSlideUrl(),
   },
   {
     id: 'case-1-4',
     title: 'Case 1-4',
-    image: '/slides/lip-sync.018.png',
+    image: getSlideUrl(),
   },
   {
     id: 'case-2',
     title: 'Case 2',
-    image: '/slides/lip-sync.019.png',
+    image: getSlideUrl(),
   },
   {
     id: 'case-2-1',
     title: 'Case 2-1',
-    image: '/slides/lip-sync.020.png',
+    image: getSlideUrl(),
   },
   {
     id: 'case-2-2',
     title: 'Case 2-2',
-    image: '/slides/lip-sync.021.png',
+    image: getSlideUrl(),
   },
   {
     id: 'case-2-3',
     title: 'Case 2-3',
-    image: '/slides/lip-sync.022.png',
+    image: getSlideUrl(),
   },
   {
     id: 'case-2-4',
     title: 'Case 2-4',
-    image: '/slides/lip-sync.023.png',
+    image: getSlideUrl(),
   },
   {
     id: 'pro-con',
     title: 'メリット・デメリット',
-    image: '/slides/lip-sync.024.png',
+    image: getSlideUrl(),
   },
   {
     id: 'q-and-a',
     title: 'Q&A',
-    image: '/slides/lip-sync.025.png',
+    image: getSlideUrl(),
   },
   {
     id: 'langue-twister',
     title: '早口言葉',
-    image: '/slides/lip-sync.026.png',
+    image: getSlideUrl(),
   },
   {
     id: 'github',
     title: 'GitHub',
-    image: '/slides/lip-sync.027.png',
+    image: getSlideUrl(),
   },
   {
     id: 'thank-you',
     title: 'Thank you!',
-    image: '/slides/lip-sync.028.png',
+    image: getSlideUrl(),
   },
 ];
