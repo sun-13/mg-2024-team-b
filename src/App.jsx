@@ -58,7 +58,7 @@ const defaultCameraLookAt = {
 
 function App() {
 
-  // state
+  // states
   const [audio, setAudio] = useState(null);
   const [lipData, setLipData] = useState(null);
   const [personProps, setPersonProps] = useState(initialPersonProps);
@@ -66,6 +66,8 @@ function App() {
   const [isPlayingPresentation, setIsPlayingPresentation] = useState(false);
   const [speechTextArray, setSpeechTextArray] = useState([]);
   const [canvasColor, setCanvasColor] = useState("color-default");
+  const [subtitle, setSubtitle] = useState(null);
+  const [showSubtitle, setShowSubtitle] = useState(false);
 
   // slide show
   const [currentSlideShowIndex, setCurrentSlideShowIndex] = useState(0);
@@ -74,6 +76,7 @@ function App() {
   // ref
   const camera = useRef(null);
   const controls = useRef(null);
+  const subtitleRef = useRef(null);
 
   const resetCamera = (duration = cameraTransitionDuration) => {
     if (!controls.current || !camera.current) {
@@ -176,6 +179,14 @@ function App() {
       ]);
     }
 
+    // set subtitle
+    if (data.subtitle) {
+      setSubtitle(data.subtitle);
+      setShowSubtitle(true);
+    } else {
+      setShowSubtitle(false);
+    }
+
     // set canvas color
     if (data.canvasColor) {
       setCanvasColor(data.canvasColor);
@@ -193,6 +204,7 @@ function App() {
     setIsPlayingPresentation(false);
     setLipData(null);
     setAudio(null);
+    setShowSubtitle(false);
   }
 
   const changeSlide = (direction = 1) => {
@@ -341,7 +353,7 @@ function App() {
             key={id}
             nodeRef={nodeRef}
             timeout={500}
-            classNames="bubble-transition-item">
+            classNames="bubble-transition">
             <div ref={nodeRef} className="speech-bubble">
                 {/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
                 <p dangerouslySetInnerHTML={{__html: text}} />
@@ -351,6 +363,14 @@ function App() {
         </TransitionGroup>}
 
       </div>
+      <CSSTransition
+        nodeRef={subtitleRef}
+        in={showSubtitle}
+        timeout={1000}
+        classNames="subtitle-transition"
+        unmountOnExit>
+        <div ref={subtitleRef} className="subtitle">{subtitle}</div>
+      </CSSTransition>
       <Loader />
     </>
   );

@@ -71,6 +71,11 @@ body {
     --canvasColor1: #e8f0ff;
     --canvasColor2: #8e96ff;
   }
+
+  &.color-purple {
+    --canvasColor1: #f8f0ff;
+    --canvasColor2: #d4aaff;
+  }
 }
 
 .hr {
@@ -166,6 +171,7 @@ h5 {
 
 .ui-box {
   position: fixed;
+  z-index: 2;
   width: 320px;
   height: 100%;
   top: 0;
@@ -247,21 +253,67 @@ h5 {
   }
 }
 
-.bubble-transition-item-enter {
+.subtitle {
+  position: fixed;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 60px 20px;
+  font-size: 60px;
+  line-height: 1.2;
+  font-weight: 800;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.3);
+  text-align: center;
+  backdrop-filter: blur(20px) saturate(120%);
+}
+
+/* Transitions */
+
+/* Bubble */
+.bubble-transition-enter {
   opacity: 0;
   transform: translateX(-20px);
 }
-.bubble-transition-item-enter-active {
+.bubble-transition-enter-active {
   opacity: 1;
   transform: translateX(0);
   transition: opacity 500ms ease-in, transform 500ms linear;
 }
-.bubble-transition-item-exit {
+.bubble-transition-exit {
   opacity: 1;
   transform: translateX(0);
 }
-.bubble-transition-item-exit-active {
+.bubble-transition-exit-active {
   opacity: 0;
   transform: translateX(-20px);
   transition: opacity 500ms ease-in, transform 500ms linear;
+}
+
+/* Subtitle */
+.subtitle-transition-enter {
+  opacity: 0;
+  transform: translate(0, 100px);
+  filter: blur(100px);
+}
+.subtitle-transition-enter-active {
+  opacity: 1;
+  transform: translate(0, 0);
+  filter: blur(0);
+  transition: opacity 500ms linear, transform 500ms linear, filter 500ms linear;
+}
+.subtitle-transition-exit {
+  opacity: 1;
+  transform: translate(0, 0);
+  filter: blur(0);
+}
+.subtitle-transition-exit-active {
+  opacity: 0;
+  transform: translate(0, 100px);
+  filter: blur(100px);
+  transition: opacity 500ms linear, transform 500ms linear, filter 500ms linear;
 }
