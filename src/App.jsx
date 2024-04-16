@@ -1,10 +1,15 @@
-import { useState, useRef, useEffect, useMemo } from 'react';
+import { useState, useRef, useEffect, useMemo, createRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Experience } from './components/Experience';
 import { Loader, PerspectiveCamera, OrbitControls } from '@react-three/drei';
 import { presentation, slideShow } from '@/presentation.js';
 import TWEEN from '@tweenjs/tween.js';
 import { ReactSVG } from 'react-svg'
+import {
+  CSSTransition,
+  TransitionGroup,
+} from 'react-transition-group';
+import { v4 as uuidv4 } from 'uuid';
 
 function Tween() {
   useFrame(() => {
@@ -160,12 +165,15 @@ function App() {
 
     // set speech text
     if (data.text) {
-      const newSpeechArray = structuredClone(speechTextArray);
-      newSpeechArray.unshift({
-        id: Date.now(),
-        text: data.text
-      });
-      setSpeechTextArray(newSpeechArray);
+      const newItem = {
+        id: uuidv4(),
+        text: data.text,
+        nodeRef: createRef(null),
+      };
+      setSpeechTextArray([
+        newItem,
+        ...speechTextArray,
+      ]);
     }
 
     // set canvas color
@@ -327,14 +335,20 @@ function App() {
           </button>}
         </div>
         {speechTextArray?.length > 0 &&
-        <div className="speech-area">
-          {speechTextArray.map((o, index) => (
-          <div key={o.id} className="speech-bubble">
-              {/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
-              <p dangerouslySetInnerHTML={{__html: o.text}} />
-          </div>
+        <TransitionGroup className="speech-area">
+          {speechTextArray.map(({id, text, nodeRef}) => (
+          <CSSTransition
+            key={id}
+            nodeRef={nodeRef}
+            timeout={500}
+            classNames="bubble-transition-item">
+            <div ref={nodeRef} className="speech-bubble">
+                {/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
+                <p dangerouslySetInnerHTML={{__html: text}} />
+            </div>
+          </CSSTransition>
           ))}
-        </div>}
+        </TransitionGroup>}
 
       </div>
       <Loader />

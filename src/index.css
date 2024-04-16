@@ -240,3 +240,22 @@ h5 {
     }
   }
 }
+
+.bubble-transition-item-enter {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+.bubble-transition-item-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 500ms ease-in, transform 500ms linear;
+}
+.bubble-transition-item-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+.bubble-transition-item-exit-active {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 500ms ease-in, transform 500ms linear;
+}
