@@ -616,8 +616,13 @@ export const slideShow = [
     image: getSlideUrl(),
   },
   {
-    id: 'github',
-    title: 'GitHub',
+    id: 'disappointments-1',
+    title: '残念-1',
+    image: getSlideUrl(),
+  },
+  {
+    id: 'disappointments-2',
+    title: '残念-2',
     image: getSlideUrl(),
   },
   {
